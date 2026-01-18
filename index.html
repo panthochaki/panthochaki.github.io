@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Pantho Chaki | Seamless Knit Design Engineer (Santoni SM8-TOP2V)</title>
+  <meta name="description" content="Pantho Chaki — Seamless Knit Design Engineer specializing in Santoni SM8-TOP2V (28G) and iPolaris. Production-stable programs, compression mapping, GSM & stretch control, and bulk troubleshooting." />
+  <meta name="author" content="Pantho Chaki" />
+  <meta name="theme-color" content="#0b0f17" />
+
+  <!-- OpenGraph / SEO -->
+  <meta property="og:title" content="Pantho Chaki | Seamless Knit Design Engineer" />
+  <meta property="og:description" content="Santoni SM8-TOP2V (28G) • iPolaris • Production-stable seamless garments from concept to bulk." />
+  <meta property="og:type" content="website" />
+  <!-- Optional: add your own preview image later -->
+  <meta property="og:image" content="assets/og-cover.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pantho Chaki | Seamless Knit Design Engineer" />
+  <meta name="twitter:description" content="Santoni SM8-TOP2V (28G) • iPolaris • Seamless program development & bulk support." />
+  <meta name="twitter:image" content="assets/og-cover.jpg" />
+
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <!-- Sticky Contact Bar (premium, real icons) -->
+  <div class="stickybar" role="region" aria-label="Quick contact">
+    <div class="container stickybar-inner">
+      <div class="stickybar-left">
+        <span class="pulse" aria-hidden="true"></span>
+        <span class="stickybar-text">Open to Remote / International Roles</span>
+      </div>
+
+      <div class="stickybar-right">
+        <a class="iconbtn" href="mailto:panthochaki12@gmail.com" aria-label="Email">
+          <span class="ico" aria-hidden="true">
+            <!-- Mail SVG -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M4.5 7.2 12 12.6l7.5-5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="iconbtn-text">Email</span>
+        </a>
+
+        <a class="iconbtn" href="https://wa.me/8801728102345" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <span class="ico" aria-hidden="true">
+            <!-- WhatsApp-like SVG (simple) -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 21a9 9 0 1 0-7.8-4.5L3 21l4.7-1.2A9 9 0 0 0 12 21Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M9.3 8.7c-.3.3-.7.9-.4 1.6.4 1.1 1.7 3.2 3.8 4.4 1 .6 1.8.8 2.4.6.5-.1.9-.7 1-1.1 0-.2-.1-.4-.3-.5l-1.1-.6c-.2-.1-.4-.1-.6.1l-.4.5c-.1.1-.3.2-.5.1-.7-.3-1.7-1-2.2-1.8-.1-.2-.1-.4.1-.5l.4-.4c.2-.2.2-.4.1-.6l-.6-1.2c-.1-.2-.3-.3-.5-.3-.4.1-.9.4-1.2.7Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="iconbtn-text">WhatsApp</span>
+        </a>
+
+        <!-- Replace YOUR_LINKEDIN_URL -->
+        <a class="iconbtn" href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="ico" aria-hidden="true">
+            <!-- LinkedIn SVG -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M6.5 9.5V18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+              <path d="M6.5 6.7h.01" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+              <path d="M10.2 18v-5.1c0-1.2.7-2.2 2-2.2s2 .9 2 2.2V18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10.2 12.6c0-1.4 1.1-2.6 2.7-2.6 1.6 0 2.7 1.1 2.7 2.6" stroke="currentColor" stroke-width="0"/>
+              <path d="M4 4.5h16v15H4v-15Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="iconbtn-text">LinkedIn</span>
+        </a>
+
+        <button class="iconbtn ghost" id="themeToggle" type="button" aria-label="Toggle theme">
+          <span class="ico" aria-hidden="true">
+            <!-- Theme SVG -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M21 12.8A8.2 8.2 0 0 1 11.2 3a7 7 0 1 0 9.8 9.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="iconbtn-text">Theme</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Pantho Chaki</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="#skills">Skills</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#case">Case Studies</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <div class="badge">Santoni SM8-TOP2V (28G) • iPolaris • Circular Seamless</div>
+
+          <h1>
+            Seamless Knit Design Engineer
+            <span class="sub">production-stable performance garments • concept → bulk</span>
+          </h1>
+
+          <p class="lead">
+            I build and optimize seamless programs and structures on <b>Santoni SM8-TOP2V</b> using <b>iPolaris</b>,
+            controlling <b>GSM</b>, <b>stretch</b>, <b>recovery</b>, <b>compression</b>, and <b>dimensional stability</b>
+            through sampling, dye evaluation, and bulk support.
+          </p>
+
+          <div class="cta-row">
+            <!-- Keep PDFs here (no extra page/section needed) -->
+            <a class="btn primary" href="Pantho_Chaki_Seamless_Knit_Design_Engineer_CV.pdf" target="_blank" rel="noopener">
+              Download CV
+            </a>
+            <a class="btn" href="Pantho_Chaki_Seamless_Knit_Portfolio.pdf" target="_blank" rel="noopener">
+              View Portfolio
+            </a>
+            <a class="btn ghost" href="#contact">Contact</a>
+          </div>
+
+          <div class="mini">
+            <div class="mini-card">
+              <div class="mini-k">3+ Years</div>
+              <div class="mini-v">Industrial experience</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">TOP-2V</div>
+              <div class="mini-v">Programming + troubleshooting</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-k">Brands</div>
+              <div class="mini-v">PUMA • M&S • AYBL • Reebok</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-right">
+          <div class="panel">
+            <div class="panel-title">Quick Profile</div>
+            <div class="panel-body">
+              <div class="kv">
+                <div class="k">Role</div><div class="v">Seamless Knit Design Engineer</div>
+                <div class="k">Machine</div><div class="v">Santoni SM8-TOP2V (28G)</div>
+                <div class="k">Software</div><div class="v">iPolaris</div>
+                <div class="k">Focus</div><div class="v">Stability • Fit • Fabric behavior</div>
+                <div class="k">Location</div><div class="v">Gazipur, Bangladesh</div>
+              </div>
+
+              <hr class="sep"/>
+
+              <div class="pill-row">
+                <span class="pill">GSM Control</span>
+                <span class="pill">Stretch/Recovery</span>
+                <span class="pill">Compression Mapping</span>
+                <span class="pill">Program Stability</span>
+                <span class="pill">Bulk Support</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel subtle">
+            <div class="panel-title">What I deliver</div>
+            <ul class="list">
+              <li>Stable programs ready for bulk production</li>
+              <li>Consistent fabric behavior pre/post dye</li>
+              <li>Compression engineered for fit + comfort</li>
+              <li>Fast troubleshooting during sampling and bulk</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Core Skills</h2>
+          <p class="muted">High-signal skills that matter to hiring managers and production teams.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Machine & Programming</h3>
+            <ul class="list">
+              <li>TOP-2V logic building, corrections, stability tuning</li>
+              <li>iPolaris structure development & optimization</li>
+              <li>Defect reduction through stable design decisions</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Fabric Engineering</h3>
+            <ul class="list">
+              <li>GSM, stretch, recovery & dimensional stability control</li>
+              <li>Stitch density tuning for texture + retention</li>
+              <li>Pre-dye vs post-dye behavior verification</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Production Support</h3>
+            <ul class="list">
+              <li>Bulk troubleshooting & run stability optimization</li>
+              <li>Yarn selection + feasibility validation</li>
+              <li>Cross-team coordination (production/quality/merch)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="strip">
+          <div class="strip-item"><span class="dot"></span> Materials: Polyester, Nylon, CDP, Elastane/Lycra blends</div>
+          <div class="strip-item"><span class="dot"></span> Tools: iPolaris • Adobe Illustrator (basic)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Services</h2>
+          <p class="muted">Clear and practical — what you can hire me for.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card service">
+            <div class="service-top">
+              <span class="service-icon" aria-hidden="true">Program Dev</span>
+            </div>
+            <h3>Program Development</h3>
+            <p class="muted">iPolaris build + TOP-2V logic optimized for stable, high-speed knitting.</p>
+          </div>
+
+          <div class="card service">
+            <div class="service-top">
+              <span class="service-icon" aria-hidden="true">Compression</span>
+            </div>
+            <h3>Compression Mapping</h3>
+            <p class="muted">Compression layout engineering for fit, comfort, and performance (production-feasible).</p>
+          </div>
+
+          <div class="card service">
+            <div class="service-top">
+              <span class="service-icon" aria-hidden="true">Fabric Control</span>
+            </div>
+            <h3>GSM & Behavior Control</h3>
+            <p class="muted">Control GSM/stretch/recovery and dimensional stability pre/post dye.</p>
+          </div>
+
+          <div class="card service">
+            <div class="service-top">
+              <span class="service-icon" aria-hidden="true">Troubleshoot</span>
+            </div>
+            <h3>Troubleshooting</h3>
+            <p class="muted">Defect analysis → root cause isolation → clean fixes for stability.</p>
+          </div>
+
+          <div class="card service">
+            <div class="service-top">
+              <span class="service-icon" aria-hidden="true">Yarn Opt</span>
+            </div>
+            <h3>Yarn Optimization</h3>
+            <p class="muted">Yarn selection and validation for repeatable bulk results.</p>
+          </div>
+
+          <div class="card service">
+            <div class="service-top">
+              <span class="service-icon" aria-hidden="true">Bulk Support</span>
+            </div>
+            <h3>Bulk Production Support</h3>
+            <p class="muted">Technical handover + running support to keep quality consistent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects (strong hover effect + modal) -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Selected Projects</h2>
+          <p class="muted">High-signal work. Click a project to open details.</p>
+        </div>
+
+        <div class="project-grid">
+          <!-- Put images in assets/projects/ -->
+          <button class="project" type="button"
+            data-title="Enhance Seamless One-Shoulder Sports Bra"
+            data-brand="AYBL"
+            data-tags="Sports Bra • Compression • Stability"
+            data-image="assets/projects/aybl_bra.jpg"
+            data-points="Built structure and program in iPolaris|Engineered compression zones for comfort/durability|Optimized TOP-2V logic for stable production|Controlled stretch/recovery per target">
+            <img src="assets/projects/aybl_bra.jpg" alt="AYBL sports bra">
+            <div class="project-overlay">
+              <div class="project-title">One-Shoulder Sports Bra</div>
+              <div class="project-sub">AYBL • Compression & stability</div>
+              <div class="project-chiprow">
+                <span class="chip">Compression</span><span class="chip">Stability</span><span class="chip">Fit</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="project" type="button"
+            data-title="Rib Scoop Neck Seamless Crop Top"
+            data-brand="Marks & Spencer"
+            data-tags="Rib • Density • Shape retention"
+            data-image="assets/projects/ms_crop.jpg"
+            data-points="Developed rib structure in iPolaris|Adjusted stitch density for texture/retention|Optimized program for stable knitting|Managed fabric behavior for durability/fit">
+            <img src="assets/projects/ms_crop.jpg" alt="M&S crop top">
+            <div class="project-overlay">
+              <div class="project-title">Rib Scoop Neck Crop Top</div>
+              <div class="project-sub">M&S • Rib & shape retention</div>
+              <div class="project-chiprow">
+                <span class="chip">Rib</span><span class="chip">Density</span><span class="chip">Retention</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="project" type="button"
+            data-title="Dare To Women’s Flared Shorts"
+            data-brand="PUMA"
+            data-tags="Shorts • Stability • Bulk"
+            data-image="assets/projects/puma_shorts.jpg"
+            data-points="Optimized structure for flexibility & fit|Engineered density for stable behavior|Improved dimensional stability for mass production|Maintained consistent bulk quality">
+            <img src="assets/projects/puma_shorts.jpg" alt="PUMA shorts">
+            <div class="project-overlay">
+              <div class="project-title">Women’s Flared Shorts</div>
+              <div class="project-sub">PUMA • Bulk stability</div>
+              <div class="project-chiprow">
+                <span class="chip">Bulk</span><span class="chip">Stability</span><span class="chip">Fit</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="project" type="button"
+            data-title="Adapt Seamless Leggings"
+            data-brand="AYBL"
+            data-tags="Leggings • Fit • Consistency"
+            data-image="assets/projects/aybl_leggings.jpg"
+            data-points="Engineered structure for fit/flexibility|Programmed for size consistency|Controlled comfort & recovery|Focused on stable running and defect reduction">
+            <img src="assets/projects/aybl_leggings.jpg" alt="AYBL leggings">
+            <div class="project-overlay">
+              <div class="project-title">Seamless Leggings</div>
+              <div class="project-sub">AYBL • Fit & consistency</div>
+              <div class="project-chiprow">
+                <span class="chip">Fit</span><span class="chip">Recovery</span><span class="chip">Consistency</span>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <div class="note">
+          <b>Add more:</b> copy a project card and change the <span class="mono">data-*</span> fields + image path.
+        </div>
+      </div>
+    </section>
+
+   <!-- Workflow -->
+<section id="workflow" class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Technical Workflow</h2>
+      <p class="muted">
+        A structured process from buyer brief to bulk production support — designed for stability, fit, and repeatability.
+      </p>
+    </div>
+
+    <div class="workflow card">
+      <div class="workflow-head">
+        <div class="workflow-title">Concept → Program → Fabric Behavior → Approval → Bulk</div>
+        <div class="workflow-hint muted">Tap any step to expand details (works on mobile too).</div>
+      </div>
+
+      <div class="workflow-steps" role="tablist" aria-label="Workflow steps">
+        <!-- Step 1 -->
+        <button class="wf-step active" type="button" data-step="1" role="tab" aria-selected="true">
+          <div class="wf-ico">📩</div>
+          <div class="wf-meta">
+            <div class="wf-name">Buyer Brief</div>
+            <div class="wf-sub">Tech pack + targets</div>
+          </div>
+        </button>
+
+        <!-- Step 2 -->
+        <button class="wf-step" type="button" data-step="2" role="tab" aria-selected="false">
+          <div class="wf-ico">🧩</div>
+          <div class="wf-meta">
+            <div class="wf-name">Structure Build</div>
+            <div class="wf-sub">iPolaris layout</div>
+          </div>
+        </button>
+
+        <!-- Step 3 -->
+        <button class="wf-step" type="button" data-step="3" role="tab" aria-selected="false">
+          <div class="wf-ico">⚙️</div>
+          <div class="wf-meta">
+            <div class="wf-name">Machine Program</div>
+            <div class="wf-sub">TOP-2V logic</div>
+          </div>
+        </button>
+
+        <!-- Step 4 -->
+        <button class="wf-step" type="button" data-step="4" role="tab" aria-selected="false">
+          <div class="wf-ico">🧪</div>
+          <div class="wf-meta">
+            <div class="wf-name">Knit & Measure</div>
+            <div class="wf-sub">verify behavior</div>
+          </div>
+        </button>
+
+        <!-- Step 5 -->
+        <button class="wf-step" type="button" data-step="5" role="tab" aria-selected="false">
+          <div class="wf-ico">🎨</div>
+          <div class="wf-meta">
+            <div class="wf-name">Dye Evaluation</div>
+            <div class="wf-sub">post-dye check</div>
+          </div>
+        </button>
+
+        <!-- Step 6 -->
+        <button class="wf-step" type="button" data-step="6" role="tab" aria-selected="false">
+          <div class="wf-ico">📐</div>
+          <div class="wf-meta">
+            <div class="wf-name">Fit Refinement</div>
+            <div class="wf-sub">feedback loop</div>
+          </div>
+        </button>
+
+        <!-- Step 7 -->
+        <button class="wf-step" type="button" data-step="7" role="tab" aria-selected="false">
+          <div class="wf-ico">✅</div>
+          <div class="wf-meta">
+            <div class="wf-name">Size-set & Bulk</div>
+            <div class="wf-sub">handover/support</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="workflow-detail" role="tabpanel" aria-live="polite">
+        <div class="wf-detail-title" id="wfDetailTitle">Buyer Brief</div>
+        <div class="wf-detail-text" id="wfDetailText">
+          Interpret buyer tech pack, performance targets (GSM/stretch/recovery), construction requirements, and risk points for production feasibility.
+        </div>
+
+        <div class="wf-detail-chips" id="wfDetailChips">
+          <span class="pill">Tech pack</span>
+          <span class="pill">Performance target</span>
+          <span class="pill">Feasibility</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Case Studies -->
+    <section id="case" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Case Study Style</h2>
+          <p class="muted">Problem → Root Cause → Fix → Result (replace text with your real cases later).</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card case">
+            <div class="case-head">
+              <div class="case-title">Bulk defects during high-speed run</div>
+              <span class="pill">Troubleshooting</span>
+            </div>
+
+            <div class="case-grid">
+              <div class="case-block">
+                <div class="case-label">Problem</div>
+                <div class="muted">Intermittent holes / unstable loops at specific zones when speed increased.</div>
+              </div>
+              <div class="case-block">
+                <div class="case-label">Root Cause</div>
+                <div class="muted">Program stability + density mismatch under speed and yarn behavior changes.</div>
+              </div>
+              <div class="case-block">
+                <div class="case-label">Fix</div>
+                <div class="muted">Adjusted logic + stitch density; stabilized transitions and yarn handling at the zone.</div>
+              </div>
+              <div class="case-block">
+                <div class="case-label">Result</div>
+                <div class="muted">Stable running at target speed with consistent fabric behavior and reduced defects.</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card case">
+            <div class="case-head">
+              <div class="case-title">GSM shifted after dyeing</div>
+              <span class="pill">Fabric Control</span>
+            </div>
+
+            <div class="case-grid">
+              <div class="case-block">
+                <div class="case-label">Problem</div>
+                <div class="muted">Post-dye GSM moved above target; stretch changed from required window.</div>
+              </div>
+              <div class="case-block">
+                <div class="case-label">Root Cause</div>
+                <div class="muted">Greige setup didn’t compensate for dye shrinkage + yarn swelling behavior.</div>
+              </div>
+              <div class="case-block">
+                <div class="case-label">Fix</div>
+                <div class="muted">Adjusted greige density/yarn length; verified post-dye behavior iteratively.</div>
+              </div>
+              <div class="case-block">
+                <div class="case-label">Result</div>
+                <div class="muted">Hit target GSM and stretch consistently for approval.</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Testimonials</h2>
+          <p class="muted">Replace with real recommendations when you have them.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card quote">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <p class="muted">Delivers stable programs and solves production issues quickly during bulk runs.</p>
+            <div class="quote-by">
+              <div class="avatar">P</div>
+              <div>
+                <div class="quote-name">Production Lead</div>
+                <div class="muted small">Seamless Department</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card quote">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <p class="muted">Strong control of GSM/stretch with excellent post-dye evaluation and adjustments.</p>
+            <div class="quote-by">
+              <div class="avatar">Q</div>
+              <div>
+                <div class="quote-name">Quality Team</div>
+                <div class="muted small">Factory QA</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card quote">
+            <div class="quote-mark" aria-hidden="true">“</div>
+            <p class="muted">Clear communication and reliable handover—sampling to bulk stays smooth.</p>
+            <div class="quote-by">
+              <div class="avatar">M</div>
+              <div>
+                <div class="quote-name">Merchandising</div>
+                <div class="muted small">Brand Programs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p class="muted">Fastest ways to reach me.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Details</h3>
+            <div class="kv">
+              <div class="k">Email</div><div class="v"><a href="mailto:panthochaki12@gmail.com">panthochaki12@gmail.com</a></div>
+              <div class="k">Phone</div><div class="v"><a href="tel:+8801728102345">+8801728-102345</a></div>
+              <div class="k">WhatsApp</div><div class="v"><a href="https://wa.me/8801728102345" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+              <div class="k">LinkedIn</div><div class="v"><a href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener">Open LinkedIn</a></div>
+              <div class="k">Location</div><div class="v">Gazipur, Bangladesh</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Message</h3>
+            <form id="contactForm">
+              <label class="field">
+                <span>Name</span>
+                <input type="text" id="name" placeholder="Your name" required />
+              </label>
+              <label class="field">
+                <span>Email</span>
+                <input type="email" id="email" placeholder="your@email.com" required />
+              </label>
+              <label class="field">
+                <span>Message</span>
+                <textarea id="message" rows="5" placeholder="Write your message..." required></textarea>
+              </label>
+              <button class="btn primary" type="submit">Copy message for email</button>
+              <p class="muted small">This form does not send automatically (safe for GitHub Pages).</p>
+            </form>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="muted small">© <span id="year"></span> Pantho Chaki • Seamless Knit Design Engineer</div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Modal -->
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Project details">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close">✕</button>
+
+      <div class="modal-body">
+        <div class="modal-media">
+          <img id="modalImage" src="" alt="Project image">
+        </div>
+
+        <div class="modal-content">
+          <div class="modal-title" id="modalTitle">Project title</div>
+          <div class="modal-sub muted" id="modalSub">Brand • Tags</div>
+          <ul class="list" id="modalPoints"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
