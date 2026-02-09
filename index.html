@@ -2,7 +2,8 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ✅ Better mobile handling (still can't override "Desktop site", but helps normal view) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Pantho Chaki | Seamless Knit Design Engineer (Santoni SM8-TOP2V)</title>
   <meta name="description" content="Pantho Chaki — Seamless Knit Design Engineer. Santoni SM8-TOP2V (28G), iPolaris. Santoni School Italy trained (80 hours). Bulk stability, GSM & stretch control, compression mapping." />
 
@@ -66,6 +67,10 @@
     }
     button,a,input,textarea{outline:none}
     button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{box-shadow:var(--focus);border-radius:16px}
+
+    /* ✅ Safety: prevent overflow + images scale */
+    img{max-width:100%;height:auto}
+    html,body{overflow-x:hidden}
 
     /* Background */
     .mesh-wrap{position:fixed;inset:0;z-index:-1;overflow:hidden}
@@ -147,43 +152,10 @@
     .btn.cv:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(129,140,248,.18)}
 
     .hero-right{position:relative}
-
-    /* --- FIXED PROFILE STYLE --- */
-    .profile {
-      padding: 14px;
-      border-radius: 34px;
-      transform: rotate(1.5deg);
-      transition: var(--transition);
-      
-      /* KEY FIX: Limit max width and center it */
-      max-width: 450px;
-      width: 100%;
-      margin: 0 auto;
-    }
-    .profile:hover {
-      transform: rotate(0deg) scale(1.02);
-    }
-    .profile img {
-      width: 100%;
-      display: block;
-      border-radius: 22px;
-      filter: saturate(.92) contrast(1.02);
-    }
-
-    /* --- FIXED PROOFBAR STYLE --- */
-    .proofbar {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      
-      /* KEY FIX: Match profile width and center */
-      max-width: 450px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    /* --------------------------- */
-
+    .profile{padding:14px;border-radius:34px;transform:rotate(1.5deg);transition:var(--transition)}
+    .profile:hover{transform:rotate(0deg) scale(1.02)}
+    .profile img{width:100%;display:block;border-radius:22px;filter:saturate(.92) contrast(1.02)}
+    .proofbar{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .proof{padding:14px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid var(--border)}
     html[data-theme="light"] .proof{background:rgba(2,6,23,.03)}
     .proof b{display:block;font-size:1.05rem;font-weight:950}
@@ -240,7 +212,7 @@
     .case{overflow:hidden;cursor:pointer;transition:var(--transition)}
     .case:hover{transform:translateY(-8px);border-color:rgba(34,211,238,.35)}
     .case .img{height:190px;background:#000;position:relative;overflow:hidden}
-    .case .img img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:transform .7s ease}
+    .case .img img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:transform .7s ease;display:block}
     .case:hover .img img{transform:scale(1.08)}
     .case .body{padding:20px 20px 22px}
     .status{
@@ -331,25 +303,10 @@
     .m-right{padding:34px;overflow:auto}
     .m-right h2{font-size:2rem;font-weight:950;letter-spacing:-1px;margin:10px 0 12px}
 
-    /* ✅ Modal text */
-    .m-meta{
-      font-weight:900;
-      color:var(--muted);
-      margin-bottom:14px;
-      line-height:1.55;
-    }
-    .m-subhead{
-      font-size:1.05rem;
-      font-weight:950;
-      margin:14px 0 8px;
-    }
-    .m-desc{
-      margin-top:14px;
-      font-weight:850;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
+    /* Modal text */
+    .m-meta{font-weight:900;color:var(--muted);margin-bottom:14px;line-height:1.55}
+    .m-subhead{font-size:1.05rem;font-weight:950;margin:14px 0 8px}
+    .m-desc{margin-top:14px;font-weight:850;color:var(--muted);line-height:1.7}
     .m-ul{list-style:none;margin:10px 0 12px}
     .m-ul li{display:flex;gap:10px;margin:10px 0;color:var(--muted);font-weight:850}
     .m-ul li::before{content:"•";color:var(--accent);font-weight:950;font-size:1.35rem;line-height:1}
@@ -366,17 +323,33 @@
     [data-reveal]{opacity:0;transform:translateY(26px);transition:1s cubic-bezier(.23,1,.32,1)}
     [data-reveal].visible{opacity:1;transform:translateY(0)}
 
-    /* Responsive */
-    @media (max-width:980px){
+    /* ✅ MAIN FIX: Desktop-mode on mobile uses ~980-1024px viewport.
+       So we stack layout earlier at 1200px. */
+    @media (max-width:1200px){
+      .container{width:min(var(--max),94%);}
+
       .navlinks{display:none}
       .burger{display:grid}
+
       .hero-grid,.authority,.wf,.contact,.modal-card{grid-template-columns:1fr}
-      /* Ensure proofbar stacks on small screens if needed, but we used Grid so 3 cols is fine */
-      /* .proofbar{grid-template-columns:repeat(3,1fr)} */
-      .skills{grid-template-columns:1fr}
+
+      .hero-right{max-width:640px;margin-inline:auto;}
+      .profile{transform:none;}
+      .profile:hover{transform:none;}
+
+      .cta{gap:10px}
+      .hero-highlights{gap:10px}
+
       .brandgrid{grid-template-columns:repeat(2,1fr)}
+      .skills{grid-template-columns:1fr}
+
+      .wf{grid-template-columns:1fr}
+      .wf-side{order:2}
+      .wf-body{order:1}
+
       .m-right{padding:22px}
     }
+
     @media (max-width:520px){
       .proofbar{grid-template-columns:1fr}
       .btn{width:100%}
@@ -403,6 +376,7 @@
     <div class="noise"></div>
   </div>
 
+  <!-- Topbar -->
   <header class="topbar">
     <div class="container">
       <nav class="nav" id="nav">
@@ -440,6 +414,7 @@
     </div>
   </header>
 
+  <!-- Mobile sheet -->
   <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Mobile navigation">
     <div class="sheet-card">
       <a href="#authority" class="sheetLink">About <span>→</span></a>
@@ -453,6 +428,7 @@
     </div>
   </div>
 
+  <!-- Hero -->
   <section class="hero" id="home">
     <div class="container grid hero-grid">
       <div data-reveal>
@@ -494,6 +470,7 @@
     </div>
   </section>
 
+  <!-- Authority / About -->
   <section class="section" id="authority">
     <div class="container">
       <div class="head" data-reveal>
@@ -575,6 +552,7 @@ and controlled fabric behavior from development to bulk production.</p>
     </div>
   </section>
 
+  <!-- Engineering Case Studies -->
   <section class="section" id="work">
     <div class="container">
       <div class="head" data-reveal>
@@ -587,6 +565,7 @@ and controlled fabric behavior from development to bulk production.</p>
         <button class="tab" data-tab="trial" type="button">R&amp;D / Texture Trials</button>
       </div>
 
+      <!-- BRAND -->
       <div class="cases-grid tab-view active" id="tab-brand">
         <article class="card case" data-reveal data-id="puma" role="button" tabindex="0" aria-label="Open PUMA case study">
           <div class="img"><img loading="lazy" src="https://i.ibb.co.com/sX1r96T/puma.png" alt="PUMA case study"></div>
@@ -600,17 +579,17 @@ ensuring bulk-ready output and dimensional consistency.</p>
         </article>
 
         <article class="card case" data-reveal data-id="ms" role="button" tabindex="0" aria-label="Open M&amp;S case study">
-          <div class="img"><img loading="lazy" src=" https://i.ibb.co.com/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif " alt="M&amp;S case study"></div>
+          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif" alt="M&amp;S case study"></div>
           <div class="body">
-            <div class="status"> M&amp;S</div>
-            <h3>M&amp;S — Rib Scoop Neck Seamless Crop Top </h3>
+            <div class="status">M&amp;S</div>
+            <h3>M&amp;S — Rib Scoop Neck Seamless Crop Top</h3>
             <p>Balanced hand-feel and recovery with controlled stitch density and stability validation.</p>
             <div class="mini"><span>stitch density</span><span>shape retention</span><span>speed-ready</span></div>
           </div>
         </article>
 
         <article class="card case" data-reveal data-id="aybl" role="button" tabindex="0" aria-label="Open AYBL case study">
-          <div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1620799140408-edc6dcb6dcb6d633?q=80&w=1200&auto=format&fit=crop" alt="AYBL case study"></div>
+          <div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop" alt="AYBL case study"></div>
           <div class="body">
             <div class="status">Bulk Validated</div>
             <h3>AYBL — Compression Mapping Build</h3>
@@ -620,6 +599,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
         </article>
       </div>
 
+      <!-- TRIAL -->
       <div class="cases-grid tab-view" id="tab-trial">
         <article class="card case" data-reveal data-id="honey" role="button" tabindex="0" aria-label="Open Honeycomb trial">
           <div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop" alt="Honeycomb trial"></div>
@@ -654,6 +634,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     </div>
   </section>
 
+  <!-- Workflow -->
   <section class="section" id="workflow">
     <div class="container">
       <div class="head" data-reveal>
@@ -673,7 +654,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
         </div>
 
         <div class="wf-body">
-          <div id="wfTitle"><h3> Buyer Techpack Analysis </h3></div>
+          <div id="wfTitle"><h3>Buyer Techpack Analysis</h3></div>
           <p id="wfText">Interpret tech-pack targets (GSM/stretch/hand-feel), confirm feasibility and risk points before development starts.</p>
           <div class="check" id="wfChecks">
             <div>Feasibility check (construction + yarn + gauge)</div>
@@ -685,6 +666,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     </div>
   </section>
 
+  <!-- Experience -->
   <section class="section" id="experience">
     <div class="container">
       <div class="head" data-reveal>
@@ -744,6 +726,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     </div>
   </section>
 
+  <!-- Skills -->
   <section class="section" id="skills">
     <div class="container">
       <div class="head" data-reveal>
@@ -771,6 +754,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     </div>
   </section>
 
+  <!-- Contact -->
   <section class="section" id="contact">
     <div class="container">
       <div class="head" data-reveal>
@@ -832,6 +816,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     </div>
   </footer>
 
+  <!-- Modal -->
   <div class="modal" id="modal" aria-hidden="true">
     <button class="m-close" id="mClose" aria-label="Close">&times;</button>
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Case study details">
@@ -841,11 +826,8 @@ ensuring bulk-ready output and dimensional consistency.</p>
         <h2 id="mTitle">Title</h2>
 
         <div class="m-meta" id="mMeta"></div>
-
         <div class="m-subhead">My Role &amp; Technical Contribution:</div>
-
         <ul class="m-ul" id="mList"></ul>
-
         <p class="m-desc" id="mDesc"></p>
 
         <div class="m-actions">
@@ -943,7 +925,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     }, { threshold: 0.35 });
     document.querySelectorAll('[data-bar]').forEach(s => barIO.observe(s));
 
-    // ✅ Modal DB (UPDATED for 2nd pic style)
+    // Modal DB
     const db = {
       puma: {
         status: "PUMA",
@@ -1048,18 +1030,13 @@ ensuring bulk-ready output and dimensional consistency.</p>
       mTitle.textContent = d.title;
       mStatus.textContent = d.status;
 
-      // ✅ Brand + Product block like your 2nd pic
       const brandLine = d.brand ? `<b>Brand:</b> ${d.brand}` : "";
       const prodLine  = d.product ? `<b>Product:</b> ${d.product}` : "";
       mMeta.innerHTML = `${brandLine}${brandLine && prodLine ? "<br>" : ""}${prodLine}`;
 
-      // ✅ Bullet points
       mList.innerHTML = (d.points || []).map(x => `<li>${x}</li>`).join('');
-
-      // ✅ Summary line
       mDesc.textContent = d.desc || "";
 
-      // Link
       if(!d.link || d.link === '#'){ mLink.style.display = 'none'; }
       else { mLink.style.display = 'inline-flex'; mLink.href = d.link; }
 
