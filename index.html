@@ -2,8 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <!-- ✅ Better mobile handling (still can't override "Desktop site", but helps normal view) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pantho Chaki | Seamless Knit Design Engineer (Santoni SM8-TOP2V)</title>
   <meta name="description" content="Pantho Chaki — Seamless Knit Design Engineer. Santoni SM8-TOP2V (28G), iPolaris. Santoni School Italy trained (80 hours). Bulk stability, GSM & stretch control, compression mapping." />
 
@@ -67,10 +66,6 @@
     }
     button,a,input,textarea{outline:none}
     button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{box-shadow:var(--focus);border-radius:16px}
-
-    /* ✅ Safety: prevent overflow + images scale */
-    img{max-width:100%;height:auto}
-    html,body{overflow-x:hidden}
 
     /* Background */
     .mesh-wrap{position:fixed;inset:0;z-index:-1;overflow:hidden}
@@ -212,7 +207,7 @@
     .case{overflow:hidden;cursor:pointer;transition:var(--transition)}
     .case:hover{transform:translateY(-8px);border-color:rgba(34,211,238,.35)}
     .case .img{height:190px;background:#000;position:relative;overflow:hidden}
-    .case .img img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:transform .7s ease;display:block}
+    .case .img img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:transform .7s ease}
     .case:hover .img img{transform:scale(1.08)}
     .case .body{padding:20px 20px 22px}
     .status{
@@ -298,15 +293,40 @@
       background:var(--panel);border:1px solid var(--border);display:grid;grid-template-columns:1.05fr .95fr;
       box-shadow:0 30px 80px rgba(0,0,0,.65);
     }
-    .m-left{background:#000}
-    .m-left img{width:100%;height:100%;object-fit:cover;display:block}
-    .m-right{padding:34px;overflow:auto}
+.m-left{
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.m-left img{
+  width:100%;
+  height:100%;
+  object-fit:contain;      /* ✅ this removes zoom */
+  object-position:center;
+  display:block;
+}    .m-right{padding:34px;overflow:auto}
     .m-right h2{font-size:2rem;font-weight:950;letter-spacing:-1px;margin:10px 0 12px}
 
-    /* Modal text */
-    .m-meta{font-weight:900;color:var(--muted);margin-bottom:14px;line-height:1.55}
-    .m-subhead{font-size:1.05rem;font-weight:950;margin:14px 0 8px}
-    .m-desc{margin-top:14px;font-weight:850;color:var(--muted);line-height:1.7}
+    /* ✅ Modal text (LIKE YOUR 2ND PIC) */
+    .m-meta{
+      font-weight:900;
+      color:var(--muted);
+      margin-bottom:14px;
+      line-height:1.55;
+    }
+    .m-subhead{
+      font-size:1.05rem;
+      font-weight:950;
+      margin:14px 0 8px;
+    }
+    .m-desc{
+      margin-top:14px;
+      font-weight:850;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
     .m-ul{list-style:none;margin:10px 0 12px}
     .m-ul li{display:flex;gap:10px;margin:10px 0;color:var(--muted);font-weight:850}
     .m-ul li::before{content:"•";color:var(--accent);font-weight:950;font-size:1.35rem;line-height:1}
@@ -323,33 +343,16 @@
     [data-reveal]{opacity:0;transform:translateY(26px);transition:1s cubic-bezier(.23,1,.32,1)}
     [data-reveal].visible{opacity:1;transform:translateY(0)}
 
-    /* ✅ MAIN FIX: Desktop-mode on mobile uses ~980-1024px viewport.
-       So we stack layout earlier at 1200px. */
-    @media (max-width:1200px){
-      .container{width:min(var(--max),94%);}
-
+    /* Responsive */
+    @media (max-width:980px){
       .navlinks{display:none}
       .burger{display:grid}
-
       .hero-grid,.authority,.wf,.contact,.modal-card{grid-template-columns:1fr}
-
-      .hero-right{max-width:640px;margin-inline:auto;}
-      .profile{transform:none;}
-      .profile:hover{transform:none;}
-
-      .cta{gap:10px}
-      .hero-highlights{gap:10px}
-
-      .brandgrid{grid-template-columns:repeat(2,1fr)}
+      .proofbar{grid-template-columns:repeat(3,1fr)}
       .skills{grid-template-columns:1fr}
-
-      .wf{grid-template-columns:1fr}
-      .wf-side{order:2}
-      .wf-body{order:1}
-
+      .brandgrid{grid-template-columns:repeat(2,1fr)}
       .m-right{padding:22px}
     }
-
     @media (max-width:520px){
       .proofbar{grid-template-columns:1fr}
       .btn{width:100%}
@@ -579,17 +582,17 @@ ensuring bulk-ready output and dimensional consistency.</p>
         </article>
 
         <article class="card case" data-reveal data-id="ms" role="button" tabindex="0" aria-label="Open M&amp;S case study">
-          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif" alt="M&amp;S case study"></div>
+          <div class="img"><img loading="lazy" src=" https://i.ibb.co.com/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif " alt="M&amp;S case study"></div>
           <div class="body">
-            <div class="status">M&amp;S</div>
-            <h3>M&amp;S — Rib Scoop Neck Seamless Crop Top</h3>
+            <div class="status"> M&amp;S</div>
+            <h3>M&amp;S — Rib Scoop Neck Seamless Crop Top </h3>
             <p>Balanced hand-feel and recovery with controlled stitch density and stability validation.</p>
             <div class="mini"><span>stitch density</span><span>shape retention</span><span>speed-ready</span></div>
           </div>
         </article>
 
         <article class="card case" data-reveal data-id="aybl" role="button" tabindex="0" aria-label="Open AYBL case study">
-          <div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop" alt="AYBL case study"></div>
+          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/QFVmQqLy/Screenshot-2026-01-18-104157.png" alt="AYBL case study"></div>
           <div class="body">
             <div class="status">Bulk Validated</div>
             <h3>AYBL — Compression Mapping Build</h3>
@@ -597,6 +600,24 @@ ensuring bulk-ready output and dimensional consistency.</p>
             <div class="mini"><span>iPolaris zoning</span><span>compression</span><span>pre/post dye</span></div>
           </div>
         </article>
+
+<article class="card case" data-reveal data-id="aybladapt" role="button" tabindex="0" aria-label="Open AYBL Adapt Leggings case study">
+  <div class="img">
+    <img loading="lazy"
+         src="assets/adapt-green.jpg"
+         alt="AYBL Adapt Seamless Leggings (Green)">
+  </div>
+  <div class="body">
+    <div class="status">AYBL</div>
+    <h3>AYBL — Adapt Seamless Leggings (Green)</h3>
+    <p>Engineered seamless leggings with optimized structure, size consistency, and controlled stretch behavior.</p>
+    <div class="mini">
+      <span>iPolaris build</span>
+      <span>TOP2V programming</span>
+      <span>stretch control</span>
+    </div>
+  </div>
+</article>
       </div>
 
       <!-- TRIAL -->
@@ -654,7 +675,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
         </div>
 
         <div class="wf-body">
-          <div id="wfTitle"><h3>Buyer Techpack Analysis</h3></div>
+          <div id="wfTitle"><h3> Buyer Techpack Analysis </h3></div>
           <p id="wfText">Interpret tech-pack targets (GSM/stretch/hand-feel), confirm feasibility and risk points before development starts.</p>
           <div class="check" id="wfChecks">
             <div>Feasibility check (construction + yarn + gauge)</div>
@@ -816,7 +837,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     </div>
   </footer>
 
-  <!-- Modal -->
+  <!-- ✅ Modal (UPDATED TO MATCH YOUR 2ND PIC) -->
   <div class="modal" id="modal" aria-hidden="true">
     <button class="m-close" id="mClose" aria-label="Close">&times;</button>
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Case study details">
@@ -825,9 +846,16 @@ ensuring bulk-ready output and dimensional consistency.</p>
         <div class="status" id="mStatus">Validated</div>
         <h2 id="mTitle">Title</h2>
 
+        <!-- ✅ Brand/Product block -->
         <div class="m-meta" id="mMeta"></div>
+
+        <!-- ✅ Heading like 2nd pic -->
         <div class="m-subhead">My Role &amp; Technical Contribution:</div>
+
+        <!-- ✅ Bullet list -->
         <ul class="m-ul" id="mList"></ul>
+
+        <!-- ✅ Summary line -->
         <p class="m-desc" id="mDesc"></p>
 
         <div class="m-actions">
@@ -925,7 +953,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     }, { threshold: 0.35 });
     document.querySelectorAll('[data-bar]').forEach(s => barIO.observe(s));
 
-    // Modal DB
+    // ✅ Modal DB (UPDATED for 2nd pic style)
     const db = {
       puma: {
         status: "PUMA",
@@ -941,26 +969,41 @@ ensuring bulk-ready output and dimensional consistency.</p>
         desc: "Production-ready program tuning with stable bulk behavior and repeatable output.",
         link: "https://sg.puma.com/sg/en/pd/dare-to-womens-flared-shorts/627876.html"
       },
-      ms: {
-        status:"Optimized",
-        title:"M&S — Rib Texture + Dimensional Control",
-        brand:"M&S",
-        product:"Rib Texture + Dimensional Control",
-        img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1600&auto=format&fit=crop",
-        points:[
-          "Balanced rib texture with recovery and hand-feel targets",
-          "Controlled stitch density and stability calibration",
-          "Validated dimensional stability for repeatability in production"
-        ],
-        desc:"Balanced texture aesthetics with production constraints and stability requirements.",
-        link:"https://www.marksandspencer.com/"
-      },
-      aybl: {
+ms: {
+  status: "Optimized",
+  title: "M&S — Rib Scoop Neck Seamless Crop Top",
+  brand: "M&S",
+  product: "Rib Scoop Neck Seamless Crop Top",
+  img: "https://i.ibb.co.com/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif",
+  points: [
+    "Developed seamless structure using iPolaris software",
+    "Applied program logic on Santoni SM8-TOP2V for stable, high-speed production",
+    "Adjusted stitch density for ribbed texture and shape retention",
+    "Managed fabric properties for fit, comfort, and durability as per design requirements"
+  ],
+  desc: "Balanced texture aesthetics with production constraints and stability requirements.",
+  link: "https://www.marksandspencer.com/l/women/tops#intid=offsale-redirect_P60758688_T516491"
+},    
+aybladapt: {
+  status: "AYBL",
+  title: "AYBL — Adapt Seamless Leggings (Green)",
+  brand: "AYBL",
+  product: "Adapt Seamless Leggings (Green)",
+  img: "assets/adapt-green.jpg",
+  points: [
+    "Engineered seamless leggings using iPolaris for optimized structure and fit",
+    "Programmed Santoni SM8-TOP2V for accurate size consistency and smooth bulk production",
+    "Controlled fabric behavior for stretch, recovery, and comfort ensuring best fit"
+  ],
+  desc: "Production-ready seamless leggings with stable compression behavior and repeatable bulk performance.",
+  link: "https://www.beaybl.com/" // replace with real product link
+},
+  aybl: {
         status:"Bulk Validated",
         title:"AYBL — Compression Mapping Build",
         brand:"AYBL",
         product:"Compression Mapping Build",
-        img:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1600&auto=format&fit=crop",
+        img:" https://i.ibb.co.com/QFVmQqLy/Screenshot-2026-01-18-104157.png",
         points:[
           "Defined zoning and compression map aligned to fit targets",
           "Stabilized program logic for repeatable run behavior",
@@ -1030,13 +1073,18 @@ ensuring bulk-ready output and dimensional consistency.</p>
       mTitle.textContent = d.title;
       mStatus.textContent = d.status;
 
+      // ✅ Brand + Product block like your 2nd pic
       const brandLine = d.brand ? `<b>Brand:</b> ${d.brand}` : "";
       const prodLine  = d.product ? `<b>Product:</b> ${d.product}` : "";
       mMeta.innerHTML = `${brandLine}${brandLine && prodLine ? "<br>" : ""}${prodLine}`;
 
+      // ✅ Bullet points
       mList.innerHTML = (d.points || []).map(x => `<li>${x}</li>`).join('');
+
+      // ✅ Summary line
       mDesc.textContent = d.desc || "";
 
+      // Link
       if(!d.link || d.link === '#'){ mLink.style.display = 'none'; }
       else { mLink.style.display = 'inline-flex'; mLink.href = d.link; }
 
