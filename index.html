@@ -198,10 +198,13 @@
     .tab:hover{transform:translateY(-2px)}
     .tab-view{display:none}
     .tab-view.active{display:grid}
-    .cases-grid{
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:28px;
-    }
+.cases-grid{
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:28px;
+
+  /* ✅ PERFECT FIX: prevent grid from stretching card height */
+  align-items: start;
+}}
 
     /* Case cards */
     .case{overflow:hidden;cursor:pointer;transition:var(--transition)}
