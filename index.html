@@ -43,8 +43,11 @@
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
+  font-family:'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}      background:var(--bg);
       color:var(--text);
       line-height:1.55;
       overflow-x:hidden;
@@ -148,26 +151,15 @@
 
     .hero-right{position:relative}
 
-    /* ✅ PROFILE SIZE FIX (smaller & controlled) */
+    /* ✅ Profile size fix */
     .hero-right .profile{
-      padding:14px;
-      border-radius:34px;
-      transform:rotate(1.5deg);
-      transition:var(--transition);
-
-      max-width:360px;     /* change 320–420 */
-      margin-left:auto;    /* keep right aligned on desktop */
+      padding:14px;border-radius:34px;transform:rotate(1.5deg);transition:var(--transition);
+      max-width:360px;margin-left:auto;
     }
     .hero-right .profile:hover{transform:rotate(0deg) scale(1.02)}
     .hero-right .profile img{
-      width:100%;
-      display:block;
-      border-radius:22px;
-      filter:saturate(.92) contrast(1.02);
-
-      aspect-ratio:4/5;     /* portrait ratio */
-      object-fit:cover;     /* premium crop; use "contain" to show full image */
-      object-position:center top;
+      width:100%;display:block;border-radius:22px;filter:saturate(.92) contrast(1.02);
+      aspect-ratio:4/5;object-fit:cover;object-position:center top;
     }
 
     .proofbar{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -219,7 +211,6 @@
     .tab-view{display:none}
     .tab-view.active{display:grid}
 
-    /* ✅ FIXED: removed extra "}}" and keep cards natural height */
     .cases-grid{
       grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
       gap:28px;
@@ -246,7 +237,11 @@
 
     /* Workflow */
     .wf{grid-template-columns:340px 1fr}
-    .wf-side{padding:22px}
+.wf-side{
+  padding:22px;
+  max-height:none;      /* remove height restriction */
+  overflow:visible;     /* remove scroll */
+}
     .wf-btn{
       width:100%;display:flex;align-items:center;gap:14px;padding:12px;border-radius:18px;
       background:transparent;border:1px solid transparent;color:var(--muted);font-weight:950;
@@ -264,6 +259,22 @@
     .wf-body{padding:34px}
     .wf-body h3{font-size:1.7rem;font-weight:950;margin-bottom:10px;letter-spacing:-.6px}
     .wf-body p{color:var(--muted);font-weight:850;font-size:1.05rem;line-height:1.75}
+
+    .wf-extra-grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:12px;
+    }
+    .wf-box{
+      padding:14px;border-radius:18px;border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+    }
+    html[data-theme="light"] .wf-box{background:rgba(2,6,23,.02)}
+    .wf-box small{display:block;color:var(--muted);font-weight:950;text-transform:uppercase;letter-spacing:.7px;font-size:.72rem}
+    .wf-box b{display:block;margin-top:6px;font-weight:950}
+    .wf-box p{margin-top:6px;color:var(--muted);font-weight:850;line-height:1.65;font-size:.98rem}
+
     .wf-body .check{margin-top:16px;display:grid;gap:10px}
     .check div{display:flex;gap:10px;color:var(--muted);font-weight:850}
     .check div::before{content:"✓";color:var(--good);font-weight:950}
@@ -316,40 +327,14 @@
       background:var(--panel);border:1px solid var(--border);display:grid;grid-template-columns:1.05fr .95fr;
       box-shadow:0 30px 80px rgba(0,0,0,.65);
     }
-    .m-left{
-      background:#000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .m-left img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      object-position:center;
-      display:block;
-    }
+    .m-left{background:#000;display:flex;align-items:center;justify-content:center}
+    .m-left img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
     .m-right{padding:34px;overflow:auto}
     .m-right h2{font-size:2rem;font-weight:950;letter-spacing:-1px;margin:10px 0 12px}
 
-    .m-meta{
-      font-weight:900;
-      color:var(--muted);
-      margin-bottom:14px;
-      line-height:1.55;
-    }
-    .m-subhead{
-      font-size:1.05rem;
-      font-weight:950;
-      margin:14px 0 8px;
-    }
-    .m-desc{
-      margin-top:14px;
-      font-weight:850;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
+    .m-meta{font-weight:900;color:var(--muted);margin-bottom:14px;line-height:1.55}
+    .m-subhead{font-size:1.05rem;font-weight:950;margin:14px 0 8px}
+    .m-desc{margin-top:14px;font-weight:850;color:var(--muted);line-height:1.7}
     .m-ul{list-style:none;margin:10px 0 12px}
     .m-ul li{display:flex;gap:10px;margin:10px 0;color:var(--muted);font-weight:850}
     .m-ul li::before{content:"•";color:var(--accent);font-weight:950;font-size:1.35rem;line-height:1}
@@ -375,9 +360,9 @@
       .skills{grid-template-columns:1fr}
       .brandgrid{grid-template-columns:repeat(2,1fr)}
       .m-right{padding:22px}
-
-      /* ✅ smaller profile + centered on mobile */
       .hero-right .profile{max-width:280px;margin:0 auto}
+      .wf-side{max-height:none}
+      .wf-extra-grid{grid-template-columns:1fr}
     }
     @media (max-width:520px){
       .proofbar{grid-template-columns:1fr}
@@ -490,7 +475,6 @@
           <img src="https://i.ibb.co.com/gLC9p3rV/IMG-20260101-194901.png" alt="Pantho Chaki"
                onerror="this.src='https://ui-avatars.com/api/?name=Pantho+Chaki&size=700&background=050814&color=22d3ee&bold=true'">
         </div>
-
         <div class="proofbar">
           <div class="proof"><b>SM8-TOP2V (28G)</b><span> production tuning</span></div>
           <div class="proof"><b>iPolaris</b><span>program logic & zoning</span></div>
@@ -505,8 +489,7 @@
     <div class="container">
       <div class="head" data-reveal>
         <h2>Technical Authority</h2>
-        <p>Engineering-first execution: Santoni machine logic, tension strategy,
-and controlled fabric behavior from development to bulk production.</p>
+        <p>Engineering-first execution: Santoni machine logic, tension strategy, and controlled fabric behavior from development to bulk production.</p>
       </div>
 
       <div class="grid authority">
@@ -533,11 +516,8 @@ and controlled fabric behavior from development to bulk production.</p>
           </div>
 
           <p style="color:var(--muted);font-weight:850;line-height:1.75">
-            I execute and stabilize SM8-TOP2V seamless programs for performance
-            garments, translating fit and fabric targets into repeatable machine logic.
-            My work focuses on stitch density control, carrier behavior, compression
-            zoning, and defect elimination to ensure stable output from development
-            through bulk production.
+            I execute and stabilize SM8-TOP2V seamless programs for performance garments, translating fit and fabric targets into repeatable machine logic.
+            My work focuses on stitch density control, carrier behavior, compression zoning, and defect elimination to ensure stable output from development through bulk production.
           </p>
 
           <ul class="list">
@@ -602,8 +582,7 @@ and controlled fabric behavior from development to bulk production.</p>
           <div class="body">
             <div class="status">PUMA</div>
             <h3>PUMA — Dare To Women’s Flared Shorts</h3>
-            <p>Optimized seamless program for stable high-speed knitting,
-ensuring bulk-ready output and dimensional consistency.</p>
+            <p>Optimized seamless program for stable high-speed knitting, ensuring bulk-ready output and dimensional consistency.</p>
             <div class="mini"><span>TOP2V logic</span><span>bulk stability</span><span>defect prevention</span></div>
           </div>
         </article>
@@ -619,9 +598,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
         </article>
 
         <article class="card case" data-reveal data-id="ayblred" role="button" tabindex="0" aria-label="Open AYBL Red Sports Bra case study">
-          <div class="img">
-            <img loading="lazy" src="https://i.ibb.co.com/QFVmQqLy/Screenshot-2026-01-18-104157.png" alt="Enhance Seamless One-Shoulder Sports Bra (Red)">
-          </div>
+          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/QFVmQqLy/Screenshot-2026-01-18-104157.png" alt="Enhance Seamless One-Shoulder Sports Bra (Red)"></div>
           <div class="body">
             <div class="status">AYBL</div>
             <h3>AYBL — Enhance Seamless One-Shoulder Sports Bra (Red)</h3>
@@ -631,9 +608,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
         </article>
 
         <article class="card case" data-reveal data-id="aybladapt" role="button" tabindex="0" aria-label="Open AYBL Adapt Leggings case study">
-          <div class="img">
-            <img loading="lazy" src="https://i.ibb.co.com/jvPPgMyG/04-090538.webp" alt="AYBL Adapt Seamless Leggings (Green)">
-          </div>
+          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/jvPPgMyG/04-090538.webp" alt="AYBL Adapt Seamless Leggings (Green)"></div>
           <div class="body">
             <div class="status">AYBL</div>
             <h3>AYBL — Adapt Seamless Leggings (Green)</h3>
@@ -643,9 +618,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
         </article>
 
         <article class="card case" data-reveal data-id="pumaleggings" role="button" tabindex="0" aria-label="Open PUMA Seamless Leggings case study">
-          <div class="img">
-            <img loading="lazy" src="https://i.ibb.co.com/chRWqjMw/51r-U-Ur7md-L-SX679.jpg" alt="PUMA Seamless Training Leggings (Pink)">
-          </div>
+          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/chRWqjMw/51r-U-Ur7md-L-SX679.jpg" alt="PUMA Seamless Training Leggings (Pink)"></div>
           <div class="body">
             <div class="status">PUMA</div>
             <h3>PUMA — Seamless Training Leggings (Pink)</h3>
@@ -690,33 +663,24 @@ ensuring bulk-ready output and dimensional consistency.</p>
     </div>
   </section>
 
-  <!-- Workflow -->
+  <!-- ✅ Workflow (UPGRADED: 10 steps / Hybrid style) -->
   <section class="section" id="workflow">
     <div class="container">
       <div class="head" data-reveal>
         <h2>Technical Workflow</h2>
-        <p>A 7-step workflow built for real factories: audit → structure → machine logic → calibration → dye behavior → fit loop → bulk.</p>
+        <p>Executive clarity + factory-depth control: techpack → structure → TOP2V logic → measurement → dye → evaluation → fit loop → size-set → production support.</p>
       </div>
 
       <div class="grid wf card" data-reveal style="overflow:hidden">
-        <div class="wf-side soft">
-          <button class="wf-btn active" data-step="1" type="button"><div class="num">01</div>Buyer Techpack Analysis</button>
-          <button class="wf-btn" data-step="2" type="button"><div class="num">02</div>Structure Build (iPolaris)</button>
-          <button class="wf-btn" data-step="3" type="button"><div class="num">03</div>Machine Logic (TOP2V)</button>
-          <button class="wf-btn" data-step="4" type="button"><div class="num">04</div>Calibration (GSM/Stretch)</button>
-          <button class="wf-btn" data-step="5" type="button"><div class="num">05</div>Dyeing Evaluation</button>
-          <button class="wf-btn" data-step="6" type="button"><div class="num">06</div>Fit Loop &amp; Mapping</button>
-          <button class="wf-btn" data-step="7" type="button"><div class="num">07</div>Bulk Handover</button>
-        </div>
+        <div class="wf-side soft" id="wfNav"></div>
 
         <div class="wf-body">
-          <div id="wfTitle"><h3> Buyer Techpack Analysis </h3></div>
-          <p id="wfText">Interpret tech-pack targets (GSM/stretch/hand-feel), confirm feasibility and risk points before development starts.</p>
-          <div class="check" id="wfChecks">
-            <div>Feasibility check (construction + yarn + gauge)</div>
-            <div>Target mapping: GSM / stretch / tube width</div>
-            <div>Risk capture: defects, instability, dye shift</div>
-          </div>
+          <div id="wfTitle"><h3></h3></div>
+          <p id="wfText"></p>
+
+          <div class="wf-extra-grid" id="wfExtra"></div>
+
+          <div class="check" id="wfChecks"></div>
         </div>
       </div>
     </div>
@@ -740,8 +704,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
             <div class="pill" style="border-color:rgba(34,211,238,.22)">SM8-TOP2V • 28G • iPolaris</div>
           </div>
           <p style="color:var(--muted);font-weight:850;line-height:1.75">
-            End-to-end development and production support for global seamless programs: stability control, technical optimization,
-            and repeatable output for bulk.
+            End-to-end development and production support for global seamless programs: stability control, technical optimization, and repeatable output for bulk.
           </p>
           <ul class="exp-bullets">
             <li>Program development + troubleshooting for production stability and defect elimination</li>
@@ -936,37 +899,12 @@ ensuring bulk-ready output and dimensional consistency.</p>
       brand: document.getElementById('tab-brand'),
       trial: document.getElementById('tab-trial')
     };
-
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         tabButtons.forEach(b => b.classList.remove('active'));
         Object.values(tabViews).forEach(v => v.classList.remove('active'));
         btn.classList.add('active');
         tabViews[btn.dataset.tab].classList.add('active');
-      });
-    });
-
-    // Workflow
-    const wf = {
-      1: { title:"Buyer Techpack Analysis", text:"Interpret tech-pack targets (Design/Outlook/Fabric/GSM), confirm feasibility, and lock risk points before development starts.", checks:["Feasibility: structure + yarn + gauge","Target mapping: GSM / stretch / tube width","Risk capture: defects + dye shift + instability"] },
-      2: { title:"Structure Build (iPolaris)", text:"Create zoning, artwork alignment, and technical structure layout designed for stability and fit targets.", checks:["Zoning + compression map alignment","Feeder plan and structure feasibility","Avoidance plan for known defect zones"] },
-      3: { title:"Machine Logic (TOP2V)", text:"Build machine logic for repeatable output: selection behavior, carrier movement, stitch density and tension strategy.", checks:["Selection logic for knit/tuck/float control","Carrier movement optimization","Stitch density control for stability"] },
-      4: { title:"Calibration (GSM / Stretch)", text:"Verify tube width, GSM and stretch behavior pre-dye; correct program parameters to hit target ranges.", checks:["Tube width & dimensional stability check","GSM correction via program tuning","Stretch behavior verification vs target"] },
-      5: { title:"Dyeing Evaluation", text:"Monitor post-dye behavior and hand-feel; adjust parameters to keep GSM/stretch within approved window.", checks:["Pre vs post dye comparison","Shrink / recovery behavior tracking","Hand-feel vs target confirmation"] },
-      6: { title:"Fit Loop & Mapping", text:"Apply compression tuning and fit corrections iteratively until size-set approval and repeatability are achieved.", checks:["Compression map tuning by zone","Fit trial feedback conversion to logic","Repeatability confirmation"] },
-      7: { title:"Bulk Handover", text:"Deliver a stable program with defect control plan; support production to maintain speed and quality.", checks:["Zero-defect setup notes","Operator-friendly handover checklist","Bulk support for stability + speed"] }
-    };
-    const wfTitle = document.getElementById('wfTitle');
-    const wfText = document.getElementById('wfText');
-    const wfChecks = document.getElementById('wfChecks');
-    document.querySelectorAll('.wf-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.wf-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const d = wf[btn.dataset.step];
-        wfTitle.innerHTML = `<h3>${d.title}</h3>`;
-        wfText.textContent = d.text;
-        wfChecks.innerHTML = d.checks.map(x => `<div>${x}</div>`).join('');
       });
     });
 
@@ -981,7 +919,251 @@ ensuring bulk-ready output and dimensional consistency.</p>
     }, { threshold: 0.35 });
     document.querySelectorAll('[data-bar]').forEach(s => barIO.observe(s));
 
-    // Modal DB
+    // ✅ Workflow (10-step / HYBRID)
+    const wf = {
+      1: {
+        title: "Buyer Techpack Analysis",
+        text: "Translate the buyer tech-pack into clear engineering targets: design intent, texture placement, performance expectation, and measurable tolerances before development starts.",
+        boxes: {
+          inputs: "Techpack, artwork, size chart, GSM/stretch targets, construction notes",
+          outputs: "Feasibility decision, risk list, target map for zones + measurements",
+          controls: "Texture intent vs. gauge limits, risk capture for defects & instability",
+          notes: "Lock what matters early (targets + risks) to avoid repeat sampling cycles."
+        },
+        checks: [
+          "Receive & review tech-pack + artwork + construction notes",
+          "Interpret design intent: texture, coverage, and placement by body zone",
+          "Feasibility check vs machine limits (28G / TOP2V selection behavior)",
+          "Target mapping: GSM / tube width / stretch / recovery window",
+          "Risk analysis: defects, distortion, dye shift, size instability"
+        ]
+      },
+
+      2: {
+        title: "Structure Build (iPolaris)",
+        text: "Build the complete structure in iPolaris aligned with buyer intent—zoning, texture definition, and machine-feasible layout for stable production behavior.",
+        boxes: {
+          inputs: "Target map from Step-1 + design layout + yarn plan",
+          outputs: "iPolaris structure with defined zones, feeder plan direction",
+          controls: "Zone boundaries, stitch density intent, float/tuck feasibility",
+          notes: "Design is not only visual—structure must run stable at production speed."
+        },
+        checks: [
+          "Create full design layout in iPolaris (front/back zones)",
+          "Define textures and assign by zone with controlled transitions",
+          "Set stitch-density direction to support shape retention & stability",
+          "Plan tension/stitch concept per zone for expected hand-feel + recovery",
+          "Confirm machine feasibility (selection limits, repeats, zone alignment)"
+        ]
+      },
+
+      3: {
+        title: "Machine Logic Setup (SM8-TOP2V)",
+        text: "Convert the iPolaris intent into TOP2V machine logic: knit/tuck/float/miss selection, carrier strategy, and yarn-length planning to achieve stable knit behavior.",
+        boxes: {
+          inputs: "iPolaris file + structure intent + yarn/tension concept",
+          outputs: "Machine-feasible program logic ready to knit",
+          controls: "Selection logic consistency + carrier movement + yarn-length",
+          notes: "Stable selection logic prevents defects and keeps output repeatable."
+        },
+        checks: [
+          "Assign selection behavior: knit / tuck / float / miss per design",
+          "Validate feasibility: selection density, repeats, and cam behavior",
+          "Set appropriate yarn length strategy for the machine & structure",
+          "Align carrier movement to reduce stress and improve stability",
+          "Confirm transitions (zone edges) to avoid visible distortion"
+        ]
+      },
+
+      4: {
+        title: "Knitting & Measurement Verification",
+        text: "During knitting, verify measurements continuously and standardize a stable measurement method to prevent drift between runs and operators.",
+        boxes: {
+          inputs: "Approved target window + measurement points + sample plan",
+          outputs: "Knitting measurement standard + confirmed base measurements",
+          controls: "CETME/measurement discipline, stage-by-stage verification",
+          notes: "If measurement control is weak, every next step becomes unstable."
+        },
+        checks: [
+          "Measure during knitting (key points) and compare to target window",
+          "Check CETME/measurement method consistency (repeatability)",
+          "Create knitting measurement standard (points + method + tolerance)",
+          "Confirm measurement at every stage (pre-dye / post-dye planning)",
+          "Record corrections to avoid repeating the same drift"
+        ]
+      },
+
+      5: {
+        title: "Dyeing Coordination & Standard Setting",
+        text: "Coordinate with the dye house and define correct presetting / process standards so post-dye fabric stays within approved GSM, stretch and measurement window.",
+        boxes: {
+          inputs: "Pre-dye data + yarn spec + shrinkage risk + dye plan",
+          outputs: "Presetting standard + process follow-up plan",
+          controls: "Stage tracking, shrinkage risk, GSM shift control",
+          notes: "Dyeing can change everything—control it, don’t guess it."
+        },
+        checks: [
+          "Align with dye-house team on process plan and targets",
+          "Set correct presetting standard for structure and yarn",
+          "Follow up each stage (preset → dye → finish) with tracking",
+          "Confirm dye-house cooperation for target control",
+          "Capture issues early to avoid rework after finishing"
+        ]
+      },
+
+      6: {
+        title: "Post-Dye Fabric Evaluation",
+        text: "After dyeing, analyze the fabric scientifically—GSM, stretch, measurement, and shrinkage—then decide the next correction loop with clear evidence.",
+        boxes: {
+          inputs: "Post-dye roll + test results + baseline targets",
+          outputs: "Evaluation report + correction direction",
+          controls: "GSM check, stretch/recovery, shrinkage by stage",
+          notes: "This step tells you what really happened vs what you expected."
+        },
+        checks: [
+          "Fabric analysis (appearance + hand-feel + stability)",
+          "Stretch & recovery check vs target behavior",
+          "GSM verification and tolerance confirmation",
+          "Measurement verification after dye/finish",
+          "Shrinkage analysis across stages and record deviation"
+        ]
+      },
+
+      7: {
+        title: "Fit & Construction Coordination (Feedback Loop)",
+        text: "Handover tube to Fit/Construction team, validate fitting behavior, and convert feedback into clear engineering actions for the next iteration.",
+        boxes: {
+          inputs: "Tube + measurement report + post-dye evaluation",
+          outputs: "FC feedback sheet + action plan for next round",
+          controls: "Fit validation, comfort mapping, construction feasibility",
+          notes: "Feedback must become machine logic—not just comments."
+        },
+        checks: [
+          "Handover tube to Fit/Construction (FC) with measurement standard",
+          "Review fitting performance with FC team",
+          "Capture clear feedback (what/where/how much) for corrections",
+          "Convert FC comments into actionable program changes",
+          "Plan next sample loop with controlled targets"
+        ]
+      },
+
+      8: {
+        title: "Technical Refinement & Repeatability",
+        text: "After feedback, refine the program and repeat the control cycle until output becomes repeatable across stages and consistently hits targets.",
+        boxes: {
+          inputs: "FC feedback + previous corrections + measured deviations",
+          outputs: "Updated stable program + updated standards",
+          controls: "Correction discipline + stage-by-stage verification",
+          notes: "Refinement is where the sample becomes production-ready."
+        },
+        checks: [
+          "Adjust program according to FC feedback and measured deviation",
+          "Update standards based on confirmed FC comments",
+          "Knit again and re-check measurement at every stage",
+          "Repeat the full process with controlled verification",
+          "Document what changed and why (for stability in next run)"
+        ]
+      },
+
+      9: {
+        title: "Size-Set Development & Buyer Approval",
+        text: "After fit sample approval, develop the size-set with strong measurement standards per size and complete the submission loop until buyer approval.",
+        boxes: {
+          inputs: "Fit approved base + size chart + grading strategy",
+          outputs: "Size-set program + submission batch + approval readiness",
+          controls: "Per-size standards, stage tracking, dye behavior per size",
+          notes: "Size-set is where scaling errors appear—control with standards."
+        },
+        checks: [
+          "Start size-set programming after fit approval",
+          "Prepare standard measurement points for every size",
+          "Follow up every knitting stage during size-set development",
+          "After dye: analyze GSM/stretch/measurement per size",
+          "Collect feedback, adjust, and prepare submission batch",
+          "Submit to buyer for approval"
+        ]
+      },
+
+      10: {
+        title: "Production Handover & Continuous Support",
+        text: "After size-set approval, handover to production with complete standards and keep continuous support to protect bulk stability and output consistency.",
+        boxes: {
+          inputs: "Approved program + standards + risk notes + operator needs",
+          outputs: "Bulk-ready release + troubleshooting support system",
+          controls: "Bulk measurement standard, stability checks, defect prevention",
+          notes: "Bulk success is not luck—handover quality decides stability."
+        },
+        checks: [
+          "Confirm with FC if any final adjustment is required",
+          "Adjust final program set for bulk production stability",
+          "Create bulk measurement standard and tolerance window",
+          "Prepare all relevant technical info (risk notes + settings + checks)",
+          "Support production continuously for troubleshooting and stability"
+        ]
+      }
+    };
+
+    // Build workflow left menu automatically
+    const wfNav = document.getElementById('wfNav');
+    wfNav.innerHTML = Object.keys(wf).map((k, idx) => {
+      const n = String(k).padStart(2,'0');
+      return `
+        <button class="wf-btn ${idx===0?'active':''}" data-step="${k}" type="button">
+          <div class="num">${n}</div>${wf[k].title}
+        </button>
+      `;
+    }).join('');
+
+    const wfTitle = document.querySelector('#wfTitle h3');
+    const wfText  = document.getElementById('wfText');
+    const wfExtra = document.getElementById('wfExtra');
+    const wfChecks= document.getElementById('wfChecks');
+
+    const renderWF = (step) => {
+      const d = wf[step];
+      if(!d) return;
+
+      wfTitle.textContent = d.title;
+      wfText.textContent  = d.text;
+
+      const b = d.boxes || {};
+      wfExtra.innerHTML = `
+        <div class="wf-box">
+          <small>Inputs</small>
+          <b>${b.inputs || ""}</b>
+          <p>${b.notes ? "" : ""}</p>
+        </div>
+        <div class="wf-box">
+          <small>Outputs</small>
+          <b>${b.outputs || ""}</b>
+          <p>${b.controls ? "" : ""}</p>
+        </div>
+        <div class="wf-box">
+          <small>Controls</small>
+          <b>${b.controls || ""}</b>
+          <p>${b.notes || ""}</p>
+        </div>
+        <div class="wf-box">
+          <small>Engineer’s Note</small>
+          <b>${b.notes || ""}</b>
+          <p>Built for repeatability: measurement → dye behavior → fit loop → bulk stability.</p>
+        </div>
+      `;
+
+      wfChecks.innerHTML = (d.checks || []).map(x => `<div>${x}</div>`).join('');
+    };
+
+    document.querySelectorAll('.wf-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.wf-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderWF(btn.dataset.step);
+      });
+    });
+
+    renderWF("1");
+
+    // Modal DB (kept as you had)
     const db = {
       puma: {
         status: "PUMA",
