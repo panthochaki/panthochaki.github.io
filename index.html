@@ -147,9 +147,29 @@
     .btn.cv:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(129,140,248,.18)}
 
     .hero-right{position:relative}
-    .profile{padding:14px;border-radius:34px;transform:rotate(1.5deg);transition:var(--transition)}
-    .profile:hover{transform:rotate(0deg) scale(1.02)}
-    .profile img{width:100%;display:block;border-radius:22px;filter:saturate(.92) contrast(1.02)}
+
+    /* ✅ PROFILE SIZE FIX (smaller & controlled) */
+    .hero-right .profile{
+      padding:14px;
+      border-radius:34px;
+      transform:rotate(1.5deg);
+      transition:var(--transition);
+
+      max-width:360px;     /* change 320–420 */
+      margin-left:auto;    /* keep right aligned on desktop */
+    }
+    .hero-right .profile:hover{transform:rotate(0deg) scale(1.02)}
+    .hero-right .profile img{
+      width:100%;
+      display:block;
+      border-radius:22px;
+      filter:saturate(.92) contrast(1.02);
+
+      aspect-ratio:4/5;     /* portrait ratio */
+      object-fit:cover;     /* premium crop; use "contain" to show full image */
+      object-position:center top;
+    }
+
     .proofbar{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .proof{padding:14px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid var(--border)}
     html[data-theme="light"] .proof{background:rgba(2,6,23,.03)}
@@ -198,13 +218,13 @@
     .tab:hover{transform:translateY(-2px)}
     .tab-view{display:none}
     .tab-view.active{display:grid}
-.cases-grid{
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:28px;
 
-  /* ✅ PERFECT FIX: prevent grid from stretching card height */
-  align-items: start;
-}}
+    /* ✅ FIXED: removed extra "}}" and keep cards natural height */
+    .cases-grid{
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:28px;
+      align-items:start;
+    }
 
     /* Case cards */
     .case{overflow:hidden;cursor:pointer;transition:var(--transition)}
@@ -296,22 +316,22 @@
       background:var(--panel);border:1px solid var(--border);display:grid;grid-template-columns:1.05fr .95fr;
       box-shadow:0 30px 80px rgba(0,0,0,.65);
     }
-.m-left{
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.m-left img{
-  width:100%;
-  height:100%;
-  object-fit:contain;      /* ✅ this removes zoom */
-  object-position:center;
-  display:block;
-}    .m-right{padding:34px;overflow:auto}
+    .m-left{
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .m-left img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+    }
+    .m-right{padding:34px;overflow:auto}
     .m-right h2{font-size:2rem;font-weight:950;letter-spacing:-1px;margin:10px 0 12px}
 
-    /* ✅ Modal text (LIKE YOUR 2ND PIC) */
     .m-meta{
       font-weight:900;
       color:var(--muted);
@@ -355,6 +375,9 @@
       .skills{grid-template-columns:1fr}
       .brandgrid{grid-template-columns:repeat(2,1fr)}
       .m-right{padding:22px}
+
+      /* ✅ smaller profile + centered on mobile */
+      .hero-right .profile{max-width:280px;margin:0 auto}
     }
     @media (max-width:520px){
       .proofbar{grid-template-columns:1fr}
@@ -463,10 +486,11 @@
       </div>
 
       <div class="hero-right" data-reveal>
-<div class="card profile">
-  <img src="https://i.ibb.co.com/gLC9p3rV/IMG-20260101-194901.png" alt="Pantho Chaki"
-       onerror="this.src='https://ui-avatars.com/api/?name=Pantho+Chaki&size=700&background=050814&color=22d3ee&bold=true'">
-</div>
+        <div class="card profile">
+          <img src="https://i.ibb.co.com/gLC9p3rV/IMG-20260101-194901.png" alt="Pantho Chaki"
+               onerror="this.src='https://ui-avatars.com/api/?name=Pantho+Chaki&size=700&background=050814&color=22d3ee&bold=true'">
+        </div>
+
         <div class="proofbar">
           <div class="proof"><b>SM8-TOP2V (28G)</b><span> production tuning</span></div>
           <div class="proof"><b>iPolaris</b><span>program logic & zoning</span></div>
@@ -585,67 +609,50 @@ ensuring bulk-ready output and dimensional consistency.</p>
         </article>
 
         <article class="card case" data-reveal data-id="ms" role="button" tabindex="0" aria-label="Open M&amp;S case study">
-          <div class="img"><img loading="lazy" src=" https://i.ibb.co.com/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif " alt="M&amp;S case study"></div>
+          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif" alt="M&amp;S case study"></div>
           <div class="body">
-            <div class="status"> M&amp;S</div>
-            <h3>M&amp;S — Rib Scoop Neck Seamless Crop Top </h3>
+            <div class="status">M&amp;S</div>
+            <h3>M&amp;S — Rib Scoop Neck Seamless Crop Top</h3>
             <p>Balanced hand-feel and recovery with controlled stitch density and stability validation.</p>
             <div class="mini"><span>stitch density</span><span>shape retention</span><span>speed-ready</span></div>
           </div>
         </article>
 
-<article class="card case" data-reveal data-id="ayblred" role="button" tabindex="0" aria-label="Open AYBL Red Sports Bra case study">
-  <div class="img">
-    <img loading="lazy"
-         src="https://i.ibb.co.com/QFVmQqLy/Screenshot-2026-01-18-104157.png"
-         alt="Enhance Seamless One-Shoulder Sports Bra (Red)">
-  </div>
-  <div class="body">
-    <div class="status">AYBL</div>
-    <h3>AYBL — Enhance Seamless One-Shoulder Sports Bra (Red)</h3>
-    <p>Developed seamless structure and compression mapping aligned with buyer performance targets.</p>
-    <div class="mini">
-      <span>iPolaris build</span>
-      <span>TOP2V logic</span>
-      <span>compression zones</span>
-    </div>
-  </div>
-</article>
+        <article class="card case" data-reveal data-id="ayblred" role="button" tabindex="0" aria-label="Open AYBL Red Sports Bra case study">
+          <div class="img">
+            <img loading="lazy" src="https://i.ibb.co.com/QFVmQqLy/Screenshot-2026-01-18-104157.png" alt="Enhance Seamless One-Shoulder Sports Bra (Red)">
+          </div>
+          <div class="body">
+            <div class="status">AYBL</div>
+            <h3>AYBL — Enhance Seamless One-Shoulder Sports Bra (Red)</h3>
+            <p>Developed seamless structure and compression mapping aligned with buyer performance targets.</p>
+            <div class="mini"><span>iPolaris build</span><span>TOP2V logic</span><span>compression zones</span></div>
+          </div>
+        </article>
 
-<article class="card case" data-reveal data-id="aybladapt" role="button" tabindex="0" aria-label="Open AYBL Adapt Leggings case study">
-  <div class="img">
-    <img loading="lazy"
-         src="https://i.ibb.co.com/jvPPgMyG/04-090538.webp"
-         alt="AYBL Adapt Seamless Leggings (Green)">
-  </div>
-  <div class="body">
-    <div class="status">AYBL</div>
-    <h3>AYBL — Adapt Seamless Leggings (Green)</h3>
-    <p>Engineered seamless leggings with optimized structure, size consistency, and controlled stretch behavior.</p>
-    <div class="mini">
-      <span>iPolaris build</span>
-      <span>TOP2V programming</span>
-      <span>stretch control</span>
-    </div>
-  </div>
-</article>
-<article class="card case" data-reveal data-id="pumaleggings" role="button" tabindex="0" aria-label="Open PUMA Seamless Leggings case study">
-  <div class="img">
-    <img loading="lazy"
-         src=" https://i.ibb.co.com/W4sL4w45/81e-D9-G-S-L-SX679.jpg "
-         alt="PUMA Seamless Training Leggings (Pink)">
-  </div>
-  <div class="body">
-    <div class="status">PUMA</div>
-    <h3>PUMA — Seamless Training Leggings (Pink)</h3>
-    <p>Engineered seamless leggings with controlled compression zones and bulk-ready stability.</p>
-    <div class="mini">
-      <span>iPolaris build</span>
-      <span>TOP2V logic</span>
-      <span>compression control</span>
-    </div>
-  </div>
-</article>
+        <article class="card case" data-reveal data-id="aybladapt" role="button" tabindex="0" aria-label="Open AYBL Adapt Leggings case study">
+          <div class="img">
+            <img loading="lazy" src="https://i.ibb.co.com/jvPPgMyG/04-090538.webp" alt="AYBL Adapt Seamless Leggings (Green)">
+          </div>
+          <div class="body">
+            <div class="status">AYBL</div>
+            <h3>AYBL — Adapt Seamless Leggings (Green)</h3>
+            <p>Engineered seamless leggings with optimized structure, size consistency, and controlled stretch behavior.</p>
+            <div class="mini"><span>iPolaris build</span><span>TOP2V programming</span><span>stretch control</span></div>
+          </div>
+        </article>
+
+        <article class="card case" data-reveal data-id="pumaleggings" role="button" tabindex="0" aria-label="Open PUMA Seamless Leggings case study">
+          <div class="img">
+            <img loading="lazy" src="https://i.ibb.co.com/chRWqjMw/51r-U-Ur7md-L-SX679.jpg" alt="PUMA Seamless Training Leggings (Pink)">
+          </div>
+          <div class="body">
+            <div class="status">PUMA</div>
+            <h3>PUMA — Seamless Training Leggings (Pink)</h3>
+            <p>Engineered seamless leggings with controlled compression zones and bulk-ready stability.</p>
+            <div class="mini"><span>iPolaris build</span><span>TOP2V logic</span><span>compression control</span></div>
+          </div>
+        </article>
       </div>
 
       <!-- TRIAL -->
@@ -865,7 +872,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     </div>
   </footer>
 
-  <!-- ✅ Modal (UPDATED TO MATCH YOUR 2ND PIC) -->
+  <!-- Modal -->
   <div class="modal" id="modal" aria-hidden="true">
     <button class="m-close" id="mClose" aria-label="Close">&times;</button>
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Case study details">
@@ -874,16 +881,9 @@ ensuring bulk-ready output and dimensional consistency.</p>
         <div class="status" id="mStatus">Validated</div>
         <h2 id="mTitle">Title</h2>
 
-        <!-- ✅ Brand/Product block -->
         <div class="m-meta" id="mMeta"></div>
-
-        <!-- ✅ Heading like 2nd pic -->
         <div class="m-subhead">My Role &amp; Technical Contribution:</div>
-
-        <!-- ✅ Bullet list -->
         <ul class="m-ul" id="mList"></ul>
-
-        <!-- ✅ Summary line -->
         <p class="m-desc" id="mDesc"></p>
 
         <div class="m-actions">
@@ -981,7 +981,7 @@ ensuring bulk-ready output and dimensional consistency.</p>
     }, { threshold: 0.35 });
     document.querySelectorAll('[data-bar]').forEach(s => barIO.observe(s));
 
-    // ✅ Modal DB (UPDATED for 2nd pic style)
+    // Modal DB
     const db = {
       puma: {
         status: "PUMA",
@@ -997,66 +997,66 @@ ensuring bulk-ready output and dimensional consistency.</p>
         desc: "Production-ready program tuning with stable bulk behavior and repeatable output.",
         link: "https://sg.puma.com/sg/en/pd/dare-to-womens-flared-shorts/627876.html"
       },
-ms: {
-  status: "Optimized",
-  title: "M&S — Rib Scoop Neck Seamless Crop Top",
-  brand: "M&S",
-  product: "Rib Scoop Neck Seamless Crop Top",
-  img: "https://i.ibb.co.com/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif",
-  points: [
-    "Developed seamless structure using iPolaris software",
-    "Applied program logic on Santoni SM8-TOP2V for stable, high-speed production",
-    "Adjusted stitch density for ribbed texture and shape retention",
-    "Managed fabric properties for fit, comfort, and durability as per design requirements"
-  ],
-  desc: "Balanced texture aesthetics with production constraints and stability requirements.",
-  link: "https://www.marksandspencer.com/l/women/tops#intid=offsale-redirect_P60758688_T516491"
-},    
-aybladapt: {
-  status: "AYBL",
-  title: "AYBL — Adapt Seamless Leggings (Green)",
-  brand: "AYBL",
-  product: "Adapt Seamless Leggings (Green)",
-  img: "https://i.ibb.co.com/jvPPgMyG/04-090538.webp",
-  points: [
-    "Engineered seamless leggings using iPolaris for optimized structure and fit",
-    "Programmed Santoni SM8-TOP2V for accurate size consistency and smooth bulk production",
-    "Controlled fabric behavior for stretch, recovery, and comfort ensuring best fit"
-  ],
-  desc: "Production-ready seamless leggings with stable compression behavior and repeatable bulk performance.",
-  link: "https://www.aybl.com/products/adapt-seamless-leggings-green/" // replace with real product link
-},
-ayblred: {
-  status: "AYBL",
-  title: "AYBL — Enhance Seamless One-Shoulder Sports Bra (Red)",
-  brand: "AYBL",
-  product: "Enhance Seamless One-Shoulder Sports Bra (Red)",
-  img: "https://i.ibb.co.com/QFVmQqLy/Screenshot-2026-01-18-104157.png",
-  points: [
-    "Developed seamless program and structure using iPolaris",
-    "Programmed machine logic on Santoni SM8-TOP2V for high-quality knit and fit",
-    "Engineered compression zones for comfort and durability",
-    "Ensured fabric performance for stretch, recovery, and comfort based on buyer specifications"
-  ],
-  desc: "Production-ready seamless sports bra with stable compression behavior and repeatable bulk performance.",
-  link: "https://www.aybl.com/products/enhance-seamless-one-shoulder-sports-bra-red/"  // replace with real product link
-},  
-pumaleggings: {
-  status: "PUMA",
-  title: "PUMA — Seamless Training Leggings (Pink)",
-  brand: "PUMA",
-  product: "Seamless Training Leggings (Pink)",
-  img: "https://i.ibb.co.com/chRWqjMw/51r-U-Ur7md-L-SX679.jpg",
-  points: [
-    "Engineered seamless structure using iPolaris for optimized fit and visual alignment",
-    "Programmed Santoni SM8-TOP2V (28G) for accurate size consistency and stable high-speed run behavior",
-    "Developed compression and ventilation zones aligned with buyer performance targets",
-    "Controlled fabric behavior for stretch, recovery, and dimensional stability (pre/post dye)"
-  ],
-  desc: "Production-ready seamless leggings with stable compression behavior and repeatable bulk performance.",
-  link: "PUT_PRODUCT_LINK_HERE"
-},   
- honey: {
+      ms: {
+        status: "Optimized",
+        title: "M&S — Rib Scoop Neck Seamless Crop Top",
+        brand: "M&S",
+        product: "Rib Scoop Neck Seamless Crop Top",
+        img: "https://i.ibb.co.com/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif",
+        points: [
+          "Developed seamless structure using iPolaris software",
+          "Applied program logic on Santoni SM8-TOP2V for stable, high-speed production",
+          "Adjusted stitch density for ribbed texture and shape retention",
+          "Managed fabric properties for fit, comfort, and durability as per design requirements"
+        ],
+        desc: "Balanced texture aesthetics with production constraints and stability requirements.",
+        link: "https://www.marksandspencer.com/l/women/tops#intid=offsale-redirect_P60758688_T516491"
+      },
+      aybladapt: {
+        status: "AYBL",
+        title: "AYBL — Adapt Seamless Leggings (Green)",
+        brand: "AYBL",
+        product: "Adapt Seamless Leggings (Green)",
+        img: "https://i.ibb.co.com/jvPPgMyG/04-090538.webp",
+        points: [
+          "Engineered seamless leggings using iPolaris for optimized structure and fit",
+          "Programmed Santoni SM8-TOP2V for accurate size consistency and smooth bulk production",
+          "Controlled fabric behavior for stretch, recovery, and comfort ensuring best fit"
+        ],
+        desc: "Production-ready seamless leggings with stable compression behavior and repeatable bulk performance.",
+        link: "https://www.aybl.com/products/adapt-seamless-leggings-green/"
+      },
+      ayblred: {
+        status: "AYBL",
+        title: "AYBL — Enhance Seamless One-Shoulder Sports Bra (Red)",
+        brand: "AYBL",
+        product: "Enhance Seamless One-Shoulder Sports Bra (Red)",
+        img: "https://i.ibb.co.com/QFVmQqLy/Screenshot-2026-01-18-104157.png",
+        points: [
+          "Developed seamless program and structure using iPolaris",
+          "Programmed machine logic on Santoni SM8-TOP2V for high-quality knit and fit",
+          "Engineered compression zones for comfort and durability",
+          "Ensured fabric performance for stretch, recovery, and comfort based on buyer specifications"
+        ],
+        desc: "Production-ready seamless sports bra with stable compression behavior and repeatable bulk performance.",
+        link: "https://www.aybl.com/products/enhance-seamless-one-shoulder-sports-bra-red/"
+      },
+      pumaleggings: {
+        status: "PUMA",
+        title: "PUMA — Seamless Training Leggings (Pink)",
+        brand: "PUMA",
+        product: "Seamless Training Leggings (Pink)",
+        img: "https://i.ibb.co.com/chRWqjMw/51r-U-Ur7md-L-SX679.jpg",
+        points: [
+          "Engineered seamless structure using iPolaris for optimized fit and visual alignment",
+          "Programmed Santoni SM8-TOP2V (28G) for accurate size consistency and stable high-speed run behavior",
+          "Developed compression and ventilation zones aligned with buyer performance targets",
+          "Controlled fabric behavior for stretch, recovery, and dimensional stability (pre/post dye)"
+        ],
+        desc: "Production-ready seamless leggings with stable compression behavior and repeatable bulk performance.",
+        link: "#"
+      },
+      honey: {
         status:"R&D Discovery",
         title:"Honeycomb Relief Map",
         brand:"R&D / Texture",
@@ -1117,18 +1117,13 @@ pumaleggings: {
       mTitle.textContent = d.title;
       mStatus.textContent = d.status;
 
-      // ✅ Brand + Product block like your 2nd pic
       const brandLine = d.brand ? `<b>Brand:</b> ${d.brand}` : "";
       const prodLine  = d.product ? `<b>Product:</b> ${d.product}` : "";
       mMeta.innerHTML = `${brandLine}${brandLine && prodLine ? "<br>" : ""}${prodLine}`;
 
-      // ✅ Bullet points
       mList.innerHTML = (d.points || []).map(x => `<li>${x}</li>`).join('');
-
-      // ✅ Summary line
       mDesc.textContent = d.desc || "";
 
-      // Link
       if(!d.link || d.link === '#'){ mLink.style.display = 'none'; }
       else { mLink.style.display = 'inline-flex'; mLink.href = d.link; }
 
