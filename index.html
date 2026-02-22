@@ -11,7 +11,6 @@
   <meta property="og:title" content="Pantho Chaki — Seamless Knit Design Engineer" />
   <meta property="og:description" content="Santoni SM8‑TOP2V (28G) • iPolaris • Bulk stability • GSM & stretch control • Compression mapping" />
   <meta property="og:type" content="website" />
-  <!-- Put your own og image URL here -->
   <meta property="og:image" content="https://ui-avatars.com/api/?name=Pantho+Chaki&size=1200&background=050814&color=22d3ee&bold=true" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,6 +34,10 @@
       --max:1180px;
       --focus:0 0 0 4px rgba(34,211,238,.16);
       --t: all .35s cubic-bezier(.23,1,.32,1);
+
+      /* New Trial Cards Vars */
+      --tc-line: rgba(255,255,255,0.10);
+      --tc-chip: rgba(255,255,255,0.08);
     }
     html[data-theme="light"]{
       --bg:#f7f9ff;
@@ -47,6 +50,10 @@
       --accent2:#4f46e5;
       --shadow:0 18px 45px rgba(2,6,23,.12);
       --focus:0 0 0 4px rgba(8,145,178,.16);
+      
+      /* New Trial Cards Vars Light */
+      --tc-line: rgba(15,23,42,.10);
+      --tc-chip: rgba(2,6,23,0.05);
     }
 
     *{box-sizing:border-box}
@@ -225,7 +232,7 @@
     .brandchip:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.35)}
     .brandchip small{display:block;margin-top:4px;color:var(--muted);font-weight:850}
 
-    /* Tabs + cards */
+    /* Tabs + cases */
     .tabs{display:flex;gap:10px;margin:18px 0 22px;flex-wrap:wrap}
     .tab{
       padding:10px 16px;border-radius:999px;border:1px solid var(--border);
@@ -237,6 +244,7 @@
     .tab-view{display:none}
     .tab-view.active{display:grid}
     .cases-grid{grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+    
     .case{overflow:hidden;cursor:pointer;transition:var(--t)}
     .case:hover{transform:translateY(-8px);border-color:rgba(34,211,238,.35)}
     .case .img{height:190px;background:#000;position:relative;overflow:hidden}
@@ -253,6 +261,160 @@
     .mini{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
     .mini span{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.03);font-weight:950;font-size:.82rem}
     html[data-theme="light"] .mini span{background:rgba(2,6,23,.02)}
+
+    /* =========================================
+       NEW TRIAL CARDS (R&D) & MODAL V2
+       ========================================= */
+    .tc-card {
+      border: 1px solid var(--tc-line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    html[data-theme="light"] .tc-card {
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .tc-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(34,211,238, 0.4);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+    }
+    html[data-theme="light"] .tc-card:hover { background: #f8fafc; border-color: var(--accent); }
+
+    .tc-thumb {
+      height: 210px;
+      position: relative;
+      background: #101225;
+      overflow: hidden;
+    }
+    .tc-thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.02);
+      transition: transform .5s ease;
+    }
+    .tc-card:hover .tc-thumb img { transform: scale(1.08); }
+    .tc-thumb:after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.58) 90%);
+      pointer-events: none;
+    }
+
+    .tc-badge {
+      position: absolute; top: 14px; left: 14px;
+      padding: 8px 12px; font-size: 11px; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px; backdrop-filter: blur(10px);
+      z-index: 2;
+    }
+    html[data-theme="light"] .tc-badge { background: rgba(0,0,0,0.4); color: #fff; border:none;}
+
+    .tc-content { padding: 18px 18px 16px; }
+    .tc-title {
+      font-size: 1.15rem; line-height: 1.2; margin: 0 0 10px;
+      font-weight: 950; letter-spacing: -0.01em; color: var(--text);
+    }
+    .tc-desc { margin: 0 0 14px; color: var(--muted); font-size: 0.92rem; line-height: 1.5; font-weight: 850;}
+
+    .tc-chips {
+      display: flex; flex-wrap: wrap; gap: 8px; padding-top: 10px;
+      border-top: 1px solid var(--tc-line);
+    }
+    .tc-chip {
+      padding: 7px 10px; font-size: 0.78rem; font-weight: 900;
+      color: var(--muted); background: var(--tc-chip);
+      border: 1px solid var(--tc-line); border-radius: 999px;
+    }
+
+    /* TRIAL CARDS MODAL */
+    .tc-modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+      display: none; align-items: center; justify-content: center;
+      padding: 18px; z-index: 5000; backdrop-filter: blur(10px);
+    }
+    .tc-modal-backdrop.show { display: flex; }
+
+    .tc-modal-box {
+      width: min(1050px, 100%); max-height: 94vh; overflow-y: auto;
+      border-radius: 26px; border: 1px solid rgba(255,255,255,0.14);
+      background: var(--panel);
+      box-shadow: 0 35px 120px rgba(0,0,0,0.65);
+      position: relative; backdrop-filter: blur(14px);
+    }
+    html[data-theme="light"] .tc-modal-box { background: #fff; border-color: var(--border); }
+
+    .tc-modal-top { display: grid; grid-template-columns: 1.45fr 0.85fr; gap: 0; min-height: 380px; }
+    @media (max-width: 860px) { .tc-modal-top { grid-template-columns: 1fr; } }
+
+.tc-modal-img{
+  background:#000;
+  min-height:320px;
+  position:relative;
+
+  /* NEW */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px;
+}
+
+.tc-modal-img img{
+  /* NEW: show full image */
+  width:100%;
+  height:100%;
+  object-fit:contain;      /* <— no cropping */
+  object-position:center;
+  display:block;
+
+  /* optional: keep it sharp */
+  image-rendering:auto;
+.tc-modal-img:after{ display:none; }    html[data-theme="light"] .tc-modal-img:after{ display:none; }}
+    @media (max-width: 860px) {
+.tc-modal-img:after{ display:none; }
+      html[data-theme="light"] .tc-modal-img:after{ display:none; }    }
+
+    .tc-modal-info { padding: 22px 22px 18px; border-left: 1px solid var(--tc-line); }
+    @media (max-width: 860px) {
+      .tc-modal-info { border-left: none; border-top: 1px solid var(--tc-line); }
+    }
+
+    .tc-modal-title { margin: 14px 0 10px; font-size: 1.7rem; font-weight: 950; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); }
+    .tc-modal-sub { color: var(--muted); font-size: 0.95rem; font-weight: 850; line-height: 1.6; margin: 0 0 16px; }
+
+    .tc-modal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
+
+    .tc-box {
+      border: 1px solid var(--tc-line); background: rgba(255,255,255,0.04);
+      border-radius: 20px; padding: 22px;
+    }
+    html[data-theme="light"] .tc-box { background: rgba(0,0,0,0.03); }
+    .tc-box h4 { margin: 0 0 10px; font-size: 0.85rem; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+    .tc-box p { margin: 0; font-size: 1.05rem; font-weight: 850; line-height: 1.65; color: var(--text); }
+
+    .tc-modal-bottom {
+      padding: 14px 18px 18px; border-top: 1px solid var(--tc-line);
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    }
+    .tc-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+    .tc-close-btn {
+      border: 1px solid var(--tc-line); background: rgba(255,255,255,0.08);
+      color: var(--text); padding: 10px 18px; border-radius: 14px;
+      cursor: pointer; font-weight: 900; letter-spacing: .01em; transition: var(--t);
+    }
+    html[data-theme="light"] .tc-close-btn { background: rgba(0,0,0,0.05); }
+    .tc-close-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(34,211,238,0.4); }
+    html[data-theme="light"] .tc-close-btn:hover { background: rgba(0,0,0,0.08); border-color: var(--border); }
+
 
     /* Workflow */
     .wf{grid-template-columns:340px 1fr;overflow:hidden}
@@ -325,7 +487,7 @@
 
     .footer{padding:56px 0;border-top:1px solid var(--border);color:var(--muted);font-weight:900;text-align:center}
 
-    /* Modal */
+    /* Original Modal (Brands) */
     .modal{position:fixed;inset:0;display:none;z-index:5000;background:rgba(0,0,0,.92);backdrop-filter:blur(18px);padding:18px;align-items:center;justify-content:center}
     .modal.active{display:flex}
     .modal-card{
@@ -334,6 +496,7 @@
       box-shadow:0 30px 80px rgba(0,0,0,.65);
     }
     .m-left{background:#000;display:flex;align-items:center;justify-content:center}
+    html[data-theme="light"] .m-left { background: #f8fafc; }
     .m-left img{width:100%;height:100%;object-fit:contain}
     .m-right{padding:28px;overflow:auto}
     .m-right h2{font-size:1.85rem;font-weight:950;letter-spacing:-1px;margin:10px 0 12px}
@@ -357,8 +520,8 @@
       html{scroll-behavior:auto}
       [data-reveal]{opacity:1;transform:none;transition:none}
       .pulse{animation:none}
-      .case .img img{transition:none}
-      .profile,.btn,.iconbtn,.case{transition:none}
+      .case .img img, .tc-thumb img {transition:none}
+      .profile,.btn,.iconbtn,.case,.tc-card{transition:none}
     }
 
     /* Responsive */
@@ -481,7 +644,6 @@
 
       <div data-reveal>
         <div class="card profile">
-          <!-- Replace this image URL with your real one -->
           <img
             src="https://i.ibb.co/gLC9p3rV/IMG-20260101-194901.png"
             alt="Pantho Chaki"
@@ -587,6 +749,7 @@
         <button class="tab" data-tab="trial" type="button">R&amp;D / Texture Trials</button>
       </div>
 
+      <!-- Tab: Brands -->
       <div class="grid cases-grid tab-view active" id="tab-brand">
         <article class="card case" data-reveal data-id="puma" role="button" tabindex="0" aria-label="Open PUMA case study">
           <div class="img"><img loading="lazy" src="https://i.ibb.co/sX1r96T/puma.png" alt="PUMA case study"></div>
@@ -639,36 +802,9 @@
         </article>
       </div>
 
-      <div class="grid cases-grid tab-view" id="tab-trial">
-        <article class="card case" data-reveal data-id="honey" role="button" tabindex="0" aria-label="Open Honeycomb trial">
-          <div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1200&auto=format&fit=crop" alt="Honeycomb trial"></div>
-          <div class="body">
-            <div class="status">R&amp;D Discovery</div>
-            <h3>Honeycomb Relief Map</h3>
-            <p>Multi‑depth structure exploration using multi‑feed tuck logic for breathable zones.</p>
-            <div class="mini"><span>multi‑feed</span><span>tuck logic</span><span>3D surface</span></div>
-          </div>
-        </article>
-
-        <article class="card case" data-reveal data-id="bird" role="button" tabindex="0" aria-label="Open Birdseye trial">
-          <div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1621333104439-419746294713?q=80&w=1200&auto=format&fit=crop" alt="Birdseye trial"></div>
-          <div class="body">
-            <div class="status">Technical Trial</div>
-            <h3>Micro‑Birdseye Geometry (28G)</h3>
-            <p>HD surface texture tuning with tension micro‑adjustment for defect‑free run.</p>
-            <div class="mini"><span>28G precision</span><span>tension tuning</span><span>HD texture</span></div>
-          </div>
-        </article>
-
-        <article class="card case" data-reveal data-id="dev" role="button" tabindex="0" aria-label="Open Baseline control system">
-          <div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop" alt="Baseline control system"></div>
-          <div class="body">
-            <div class="status">Process</div>
-            <h3>Baseline Control System</h3>
-            <p>Structured approach to stabilize GSM/tube width/stretch targets before bulk handover.</p>
-            <div class="mini"><span>baseline SL</span><span>repeatability</span><span>QC mindset</span></div>
-          </div>
-        </article>
+      <!-- Tab: Trials (Dynamically populated by JS) -->
+      <div class="grid cases-grid tab-view" id="tab-trial" data-reveal>
+        <!-- The trial cards will be injected here via JavaScript -->
       </div>
     </div>
   </section>
@@ -843,7 +979,7 @@
     </div>
   </footer>
 
-  <!-- Modal -->
+  <!-- Modal 1: Original Modal (For Brands) -->
   <div class="modal" id="modal" aria-hidden="true">
     <button class="m-close" id="mClose" aria-label="Close">&times;</button>
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Case study details">
@@ -864,6 +1000,35 @@
     </div>
   </div>
 
+  <!-- Modal 2: New Trial Modal (For R&D) -->
+  <div class="tc-modal-backdrop" id="tc_backdrop" aria-hidden="true">
+    <div class="tc-modal-box" role="dialog" aria-modal="true" aria-label="R&D Trial Detail">
+      <div class="tc-modal-top">
+        <div class="tc-modal-img">
+          <img id="m_img_tc" alt="Trial image" />
+        </div>
+
+        <div class="tc-modal-info">
+          <div class="tc-badge" id="m_badge_tc" style="position:relative; top:0; left:0; margin-bottom:14px; display:inline-flex;">R&D TEXTURE TRIAL</div>
+          <h2 class="tc-modal-title" id="m_title_tc"></h2>
+          <p class="tc-modal-sub" id="m_desc_tc"></p>
+
+          <div class="tc-modal-grid">
+            <div class="tc-box">
+              <h4>Method & Execution</h4>
+              <p id="m_method_tc"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc-modal-bottom">
+        <div class="tc-meta" id="m_tags_tc"></div>
+        <button class="tc-close-btn" id="closeBtn_tc">Close</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // -----------------------------
     // Theme (persist)
@@ -874,7 +1039,6 @@
     const applyTheme = (t) => {
       root.setAttribute('data-theme', t);
       try { localStorage.setItem('theme', t); } catch {}
-      // theme-color for mobile browsers
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', t === 'light' ? '#f7f9ff' : '#050814');
     };
@@ -889,11 +1053,10 @@
       applyTheme(isDark ? 'light' : 'dark');
     });
 
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // -----------------------------
-    // Reveal on scroll (perf + reduced motion)
+    // Reveal on scroll
     // -----------------------------
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReduced) {
@@ -954,184 +1117,69 @@
       1: {
         title: "Buyer Techpack Analysis",
         text: "Translate the buyer tech-pack into clear engineering targets: design intent, texture placement, performance expectation, and measurable tolerances before development starts.",
-        boxes: {
-          inputs: "Techpack, artwork, size chart, GSM/stretch targets, construction notes",
-          outputs: "Feasibility decision, risk list, target map for zones + measurements",
-          controls: "Texture intent vs. gauge limits, risk capture for defects & instability",
-          notes: "Lock what matters early (targets + risks) to avoid repeat sampling cycles."
-        },
-        checks: [
-          "Receive & review tech-pack + artwork + construction notes",
-          "Interpret design intent: texture, coverage, and placement by body zone",
-          "Feasibility check vs machine limits (28G / TOP2V selection behavior)",
-          "Target mapping: GSM / tube width / stretch / recovery window",
-          "Risk analysis: defects, distortion, dye shift, size instability"
-        ]
+        boxes: { inputs: "Techpack, artwork, size chart, GSM/stretch targets, construction notes", outputs: "Feasibility decision, risk list, target map for zones + measurements", controls: "Texture intent vs. gauge limits, risk capture for defects & instability", notes: "Lock what matters early (targets + risks) to avoid repeat sampling cycles." },
+        checks: [ "Receive & review tech-pack + artwork + construction notes", "Interpret design intent: texture, coverage, and placement by body zone", "Feasibility check vs machine limits (28G / TOP2V selection behavior)", "Target mapping: GSM / tube width / stretch / recovery window", "Risk analysis: defects, distortion, dye shift, size instability" ]
       },
       2: {
         title: "Structure Build (iPolaris)",
         text: "Build the complete structure in iPolaris aligned with buyer intent—zoning, texture definition, and machine-feasible layout for stable production behavior.",
-        boxes: {
-          inputs: "Target map from Step-1 + design layout + yarn plan",
-          outputs: "iPolaris structure with defined zones, feeder plan direction",
-          controls: "Zone boundaries, stitch density intent, float/tuck feasibility",
-          notes: "Design is not only visual—structure must run stable at production speed."
-        },
-        checks: [
-          "Create full design layout in iPolaris (front/back zones)",
-          "Define textures and assign by zone with controlled transitions",
-          "Set stitch-density direction to support shape retention & stability",
-          "Plan tension/stitch concept per zone for expected hand-feel + recovery",
-          "Confirm machine feasibility (selection limits, repeats, zone alignment)"
-        ]
+        boxes: { inputs: "Target map from Step-1 + design layout + yarn plan", outputs: "iPolaris structure with defined zones, feeder plan direction", controls: "Zone boundaries, stitch density intent, float/tuck feasibility", notes: "Design is not only visual—structure must run stable at production speed." },
+        checks: [ "Create full design layout in iPolaris (front/back zones)", "Define textures and assign by zone with controlled transitions", "Set stitch-density direction to support shape retention & stability", "Plan tension/stitch concept per zone for expected hand-feel + recovery", "Confirm machine feasibility (selection limits, repeats, zone alignment)" ]
       },
       3: {
         title: "Machine Logic Setup (SM8-TOP2V)",
         text: "Convert the iPolaris intent into TOP2V machine logic: knit/tuck/float/miss selection, carrier strategy, and yarn-length planning to achieve stable knit behavior.",
-        boxes: {
-          inputs: "iPolaris file + structure intent + yarn/tension concept",
-          outputs: "Machine-feasible program logic ready to knit",
-          controls: "Selection logic consistency + carrier movement + yarn-length",
-          notes: "Stable selection logic prevents defects and keeps output repeatable."
-        },
-        checks: [
-          "Assign selection behavior: knit / tuck / float / miss per design",
-          "Validate feasibility: selection density, repeats, and cam behavior",
-          "Set appropriate yarn length strategy for the machine & structure",
-          "Align carrier movement to reduce stress and improve stability",
-          "Confirm transitions (zone edges) to avoid visible distortion"
-        ]
+        boxes: { inputs: "iPolaris file + structure intent + yarn/tension concept", outputs: "Machine-feasible program logic ready to knit", controls: "Selection logic consistency + carrier movement + yarn-length", notes: "Stable selection logic prevents defects and keeps output repeatable." },
+        checks: [ "Assign selection behavior: knit / tuck / float / miss per design", "Validate feasibility: selection density, repeats, and cam behavior", "Set appropriate yarn length strategy for the machine & structure", "Align carrier movement to reduce stress and improve stability", "Confirm transitions (zone edges) to avoid visible distortion" ]
       },
       4: {
         title: "Knitting & Measurement Verification",
         text: "During knitting, verify measurements continuously and standardize a stable measurement method to prevent drift between runs and operators.",
-        boxes: {
-          inputs: "Approved target window + measurement points + sample plan",
-          outputs: "Knitting measurement standard + confirmed base measurements",
-          controls: "CETME/measurement discipline, stage-by-stage verification",
-          notes: "If measurement control is weak, every next step becomes unstable."
-        },
-        checks: [
-          "Measure during knitting (key points) and compare to target window",
-          "Check CETME/measurement method consistency (repeatability)",
-          "Create knitting measurement standard (points + method + tolerance)",
-          "Confirm measurement at every stage (pre-dye / post-dye planning)",
-          "Record corrections to avoid repeating the same drift"
-        ]
+        boxes: { inputs: "Approved target window + measurement points + sample plan", outputs: "Knitting measurement standard + confirmed base measurements", controls: "CETME/measurement discipline, stage-by-stage verification", notes: "If measurement control is weak, every next step becomes unstable." },
+        checks: [ "Measure during knitting (key points) and compare to target window", "Check CETME/measurement method consistency (repeatability)", "Create knitting measurement standard (points + method + tolerance)", "Confirm measurement at every stage (pre-dye / post-dye planning)", "Record corrections to avoid repeating the same drift" ]
       },
       5: {
         title: "Dyeing Coordination & Standard Setting",
         text: "Coordinate with the dye house and define correct presetting / process standards so post-dye fabric stays within approved GSM, stretch and measurement window.",
-        boxes: {
-          inputs: "Pre-dye data + yarn spec + shrinkage risk + dye plan",
-          outputs: "Presetting standard + process follow-up plan",
-          controls: "Stage tracking, shrinkage risk, GSM shift control",
-          notes: "Dyeing can change everything—control it, don’t guess it."
-        },
-        checks: [
-          "Align with dye-house team on process plan and targets",
-          "Set correct presetting standard for structure and yarn",
-          "Follow up each stage (preset → dye → finish) with tracking",
-          "Confirm dye-house cooperation for target control",
-          "Capture issues early to avoid rework after finishing"
-        ]
+        boxes: { inputs: "Pre-dye data + yarn spec + shrinkage risk + dye plan", outputs: "Presetting standard + process follow-up plan", controls: "Stage tracking, shrinkage risk, GSM shift control", notes: "Dyeing can change everything—control it, don’t guess it." },
+        checks: [ "Align with dye-house team on process plan and targets", "Set correct presetting standard for structure and yarn", "Follow up each stage (preset → dye → finish) with tracking", "Confirm dye-house cooperation for target control", "Capture issues early to avoid rework after finishing" ]
       },
       6: {
         title: "Post-Dye Fabric Evaluation",
         text: "After dyeing, analyze the fabric scientifically—GSM, stretch, measurement, and shrinkage—then decide the next correction loop with clear evidence.",
-        boxes: {
-          inputs: "Post-dye roll + test results + baseline targets",
-          outputs: "Evaluation report + correction direction",
-          controls: "GSM check, stretch/recovery, shrinkage by stage",
-          notes: "This step tells you what really happened vs what you expected."
-        },
-        checks: [
-          "Fabric analysis (appearance + hand-feel + stability)",
-          "Stretch & recovery check vs target behavior",
-          "GSM verification and tolerance confirmation",
-          "Measurement verification after dye/finish",
-          "Shrinkage analysis across stages and record deviation"
-        ]
+        boxes: { inputs: "Post-dye roll + test results + baseline targets", outputs: "Evaluation report + correction direction", controls: "GSM check, stretch/recovery, shrinkage by stage", notes: "This step tells you what really happened vs what you expected." },
+        checks: [ "Fabric analysis (appearance + hand-feel + stability)", "Stretch & recovery check vs target behavior", "GSM verification and tolerance confirmation", "Measurement verification after dye/finish", "Shrinkage analysis across stages and record deviation" ]
       },
       7: {
         title: "Fit & Construction Coordination (Feedback Loop)",
         text: "Handover tube to Fit/Construction team, validate fitting behavior, and convert feedback into clear engineering actions for the next iteration.",
-        boxes: {
-          inputs: "Tube + measurement report + post-dye evaluation",
-          outputs: "FC feedback sheet + action plan for next round",
-          controls: "Fit validation, comfort mapping, construction feasibility",
-          notes: "Feedback must become machine logic—not just comments."
-        },
-        checks: [
-          "Handover tube to Fit/Construction (FC) with measurement standard",
-          "Review fitting performance with FC team",
-          "Capture clear feedback (what/where/how much) for corrections",
-          "Convert FC comments into actionable program changes",
-          "Plan next sample loop with controlled targets"
-        ]
+        boxes: { inputs: "Tube + measurement report + post-dye evaluation", outputs: "FC feedback sheet + action plan for next round", controls: "Fit validation, comfort mapping, construction feasibility", notes: "Feedback must become machine logic—not just comments." },
+        checks: [ "Handover tube to Fit/Construction (FC) with measurement standard", "Review fitting performance with FC team", "Capture clear feedback (what/where/how much) for corrections", "Convert FC comments into actionable program changes", "Plan next sample loop with controlled targets" ]
       },
       8: {
         title: "Technical Refinement & Repeatability",
         text: "After feedback, refine the program and repeat the control cycle until output becomes repeatable across stages and consistently hits targets.",
-        boxes: {
-          inputs: "FC feedback + previous corrections + measured deviations",
-          outputs: "Updated stable program + updated standards",
-          controls: "Correction discipline + stage-by-stage verification",
-          notes: "Refinement is where the sample becomes production-ready."
-        },
-        checks: [
-          "Adjust program according to FC feedback and measured deviation",
-          "Update standards based on confirmed FC comments",
-          "Knit again and re-check measurement at every stage",
-          "Repeat the full process with controlled verification",
-          "Document what changed and why (for stability in next run)"
-        ]
+        boxes: { inputs: "FC feedback + previous corrections + measured deviations", outputs: "Updated stable program + updated standards", controls: "Correction discipline + stage-by-stage verification", notes: "Refinement is where the sample becomes production-ready." },
+        checks: [ "Adjust program according to FC feedback and measured deviation", "Update standards based on confirmed FC comments", "Knit again and re-check measurement at every stage", "Repeat the full process with controlled verification", "Document what changed and why (for stability in next run)" ]
       },
       9: {
         title: "Size-Set Development & Buyer Approval",
         text: "After fit sample approval, develop the size-set with strong measurement standards per size and complete the submission loop until buyer approval.",
-        boxes: {
-          inputs: "Fit approved base + size chart + grading strategy",
-          outputs: "Size-set program + submission batch + approval readiness",
-          controls: "Per-size standards, stage tracking, dye behavior per size",
-          notes: "Size-set is where scaling errors appear—control with standards."
-        },
-        checks: [
-          "Start size-set programming after fit approval",
-          "Prepare standard measurement points for every size",
-          "Follow up every knitting stage during size-set development",
-          "After dye: analyze GSM/stretch/measurement per size",
-          "Collect feedback, adjust, and prepare submission batch",
-          "Submit to buyer for approval"
-        ]
+        boxes: { inputs: "Fit approved base + size chart + grading strategy", outputs: "Size-set program + submission batch + approval readiness", controls: "Per-size standards, stage tracking, dye behavior per size", notes: "Size-set is where scaling errors appear—control with standards." },
+        checks: [ "Start size-set programming after fit approval", "Prepare standard measurement points for every size", "Follow up every knitting stage during size-set development", "After dye: analyze GSM/stretch/measurement per size", "Collect feedback, adjust, and prepare submission batch", "Submit to buyer for approval" ]
       },
       10: {
         title: "Production Handover & Continuous Support",
         text: "After size-set approval, handover to production with complete standards and keep continuous support to protect bulk stability and output consistency.",
-        boxes: {
-          inputs: "Approved program + standards + risk notes + operator needs",
-          outputs: "Bulk-ready release + troubleshooting support system",
-          controls: "Bulk measurement standard, stability checks, defect prevention",
-          notes: "Bulk success is not luck—handover quality decides stability."
-        },
-        checks: [
-          "Confirm with FC if any final adjustment is required",
-          "Adjust final program set for bulk production stability",
-          "Create bulk measurement standard and tolerance window",
-          "Prepare all relevant technical info (risk notes + settings + checks)",
-          "Support production continuously for troubleshooting and stability"
-        ]
+        boxes: { inputs: "Approved program + standards + risk notes + operator needs", outputs: "Bulk-ready release + troubleshooting support system", controls: "Bulk measurement standard, stability checks, defect prevention", notes: "Bulk success is not luck—handover quality decides stability." },
+        checks: [ "Confirm with FC if any final adjustment is required", "Adjust final program set for bulk production stability", "Create bulk measurement standard and tolerance window", "Prepare all relevant technical info (risk notes + settings + checks)", "Support production continuously for troubleshooting and stability" ]
       }
     };
 
     const wfNav = document.getElementById('wfNav');
     wfNav.innerHTML = Object.keys(wf).map((k, idx) => {
       const n = String(k).padStart(2,'0');
-      return `
-        <button class="wf-btn ${idx===0?'active':''}" data-step="${k}" type="button">
-          <div class="num">${n}</div>${wf[k].title}
-        </button>
-      `;
+      return `<button class="wf-btn ${idx===0?'active':''}" data-step="${k}" type="button"><div class="num">${n}</div>${wf[k].title}</button>`;
     }).join('');
 
     const wfTitle = document.querySelector('#wfTitle h3');
@@ -1144,7 +1192,6 @@
       if(!d) return;
       wfTitle.textContent = d.title;
       wfText.textContent  = d.text;
-
       const b = d.boxes || {};
       wfExtra.innerHTML = `
         <div class="wf-box"><small>Inputs</small><b>${b.inputs || ""}</b><p>What we start with.</p></div>
@@ -1164,173 +1211,168 @@
     });
     renderWF("1");
 
+
     // -----------------------------
-    // Case study modal
+    // MODAL 1: Brands Database & Logic
     // -----------------------------
     const db = {
       puma: {
-        status: "PUMA",
-        title: "PUMA — Dare To Women’s Flared Shorts",
-        brand: "PUMA",
-        product: "Dare To Women’s Flared Shorts",
+        status: "PUMA", title: "PUMA — Dare To Women’s Flared Shorts", brand: "PUMA", product: "Dare To Women’s Flared Shorts",
         img: "https://i.ibb.co/sX1r96T/puma.png",
-        points: [
-          "Developed seamless program and optimized structure using iPolaris",
-          "Tuned stitch density and carrier logic for fit and flexibility",
-          "Ensured dimensional stability and consistent quality for bulk production"
-        ],
+        points: ["Developed seamless program and optimized structure using iPolaris", "Tuned stitch density and carrier logic for fit and flexibility", "Ensured dimensional stability and consistent quality for bulk production"],
         desc: "Production-ready program tuning with stable bulk behavior and repeatable output.",
         link: "https://sg.puma.com/sg/en/pd/dare-to-womens-flared-shorts/627876.html"
       },
       ms: {
-        status: "Optimized",
-        title: "M&S — Rib Scoop Neck Seamless Crop Top",
-        brand: "M&S",
-        product: "Rib Scoop Neck Seamless Crop Top",
+        status: "Optimized", title: "M&S — Rib Scoop Neck Seamless Crop Top", brand: "M&S", product: "Rib Scoop Neck Seamless Crop Top",
         img: "https://i.ibb.co/8nySfKJS/Rib-Scoop-Neck-Seamless-Crop-Top.avif",
-        points: [
-          "Developed seamless structure using iPolaris software",
-          "Applied program logic on Santoni SM8‑TOP2V for stable, high‑speed production",
-          "Adjusted stitch density for ribbed texture and shape retention",
-          "Managed fabric properties for fit, comfort, and durability as per design requirements"
-        ],
+        points: ["Developed seamless structure using iPolaris software", "Applied program logic on Santoni SM8‑TOP2V for stable, high‑speed production", "Adjusted stitch density for ribbed texture and shape retention", "Managed fabric properties for fit, comfort, and durability as per design requirements"],
         desc: "Balanced texture aesthetics with production constraints and stability requirements.",
         link: "https://www.marksandspencer.com/l/women/tops#intid=offsale-redirect_P60758688_T516491"
       },
       aybladapt: {
-        status: "AYBL",
-        title: "AYBL — Adapt Seamless Leggings (Green)",
-        brand: "AYBL",
-        product: "Adapt Seamless Leggings (Green)",
+        status: "AYBL", title: "AYBL — Adapt Seamless Leggings (Green)", brand: "AYBL", product: "Adapt Seamless Leggings (Green)",
         img: "https://i.ibb.co/jvPPgMyG/04-090538.webp",
-        points: [
-          "Engineered seamless leggings using iPolaris for optimized structure and fit",
-          "Programmed Santoni SM8‑TOP2V for accurate size consistency and smooth bulk production",
-          "Controlled fabric behavior for stretch, recovery, and comfort ensuring best fit"
-        ],
+        points: ["Engineered seamless leggings using iPolaris for optimized structure and fit", "Programmed Santoni SM8‑TOP2V for accurate size consistency and smooth bulk production", "Controlled fabric behavior for stretch, recovery, and comfort ensuring best fit"],
         desc: "Production-ready seamless leggings with stable compression behavior and repeatable bulk performance.",
         link: "https://www.aybl.com/products/adapt-seamless-leggings-green/"
       },
       ayblred: {
-        status: "AYBL",
-        title: "AYBL — Enhance Seamless One‑Shoulder Sports Bra (Red)",
-        brand: "AYBL",
-        product: "Enhance Seamless One‑Shoulder Sports Bra (Red)",
+        status: "AYBL", title: "AYBL — Enhance Seamless One‑Shoulder Sports Bra (Red)", brand: "AYBL", product: "Enhance Seamless One‑Shoulder Sports Bra (Red)",
         img: "https://i.ibb.co/QFVmQqLy/Screenshot-2026-01-18-104157.png",
-        points: [
-          "Developed seamless program and structure using iPolaris",
-          "Programmed machine logic on Santoni SM8‑TOP2V for high‑quality knit and fit",
-          "Engineered compression zones for comfort and durability",
-          "Ensured fabric performance for stretch, recovery, and comfort based on buyer specifications"
-        ],
+        points: ["Developed seamless program and structure using iPolaris", "Programmed machine logic on Santoni SM8‑TOP2V for high‑quality knit and fit", "Engineered compression zones for comfort and durability", "Ensured fabric performance for stretch, recovery, and comfort based on buyer specifications"],
         desc: "Production-ready seamless sports bra with stable compression behavior and repeatable bulk performance.",
         link: "https://www.aybl.com/products/enhance-seamless-one-shoulder-sports-bra-red/"
       },
       pumaleggings: {
-        status: "PUMA",
-        title: "PUMA — Seamless Training Leggings (Pink)",
-        brand: "PUMA",
-        product: "Seamless Training Leggings (Pink)",
-        img: "https://i.ibb.co/chRWqjMw/51r-U-Ur7md-L-SX679.jpg",
-        points: [
-          "Engineered seamless structure using iPolaris for optimized fit and visual alignment",
-          "Programmed Santoni SM8‑TOP2V (28G) for accurate size consistency and stable high‑speed run behavior",
-          "Developed compression and ventilation zones aligned with buyer performance targets",
-          "Controlled fabric behavior for stretch, recovery, and dimensional stability (pre/post dye)"
-        ],
+        status: "PUMA", title: "PUMA — Seamless Training Leggings (Pink)", brand: "PUMA", product: "Seamless Training Leggings (Pink)",
+        img: "https://i.ibb.co.com/W4sL4w45/81e-D9-G-S-L-SX679.jpg",
+        points: ["Engineered seamless structure using iPolaris for optimized fit and visual alignment", "Programmed Santoni SM8‑TOP2V (28G) for accurate size consistency and stable high‑speed run behavior", "Developed compression and ventilation zones aligned with buyer performance targets", "Controlled fabric behavior for stretch, recovery, and dimensional stability (pre/post dye)"],
         desc: "Production-ready seamless leggings with stable compression behavior and repeatable bulk performance.",
         link: "#"
-      },
-      honey: {
-        status:"R&D Discovery",
-        title:"Honeycomb Relief Map",
-        brand:"R&D / Texture",
-        product:"Honeycomb Relief Structure",
-        img:"https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1600&auto=format&fit=crop",
-        points:[
-          "Explored breathable zoning using multi-feed tuck logic",
-          "Mapped depth variation while keeping run stability",
-          "Created feasibility notes for production adaptation"
-        ],
-        desc:"R&D exploration into multi-depth structures on 28G constraints.",
-        link:"#"
-      },
-      bird: {
-        status:"Technical Trial",
-        title:"Micro‑Birdseye Geometry (28G)",
-        brand:"R&D / Texture",
-        product:"Micro‑Birdseye Geometry",
-        img:"https://images.unsplash.com/photo-1621333104439-419746294713?q=80&w=1600&auto=format&fit=crop",
-        points:[
-          "Surface texture tuning with tension micro‑adjustment",
-          "Run-stability check across speed range",
-          "Repeat alignment and defect prevention notes"
-        ],
-        desc:"Texture development focused on clean geometry, stable run behavior, and controlled hand-feel.",
-        link:"#"
-      },
-      dev: {
-        status:"Process",
-        title:"Baseline Control System",
-        brand:"Internal Process",
-        product:"Baseline calibration & standards",
-        img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1600&auto=format&fit=crop",
-        points:[
-          "Baseline stitch length, GSM, and width control before dye",
-          "Stage-wise measurement discipline to prevent drift",
-          "Documentation standard for repeatability in bulk"
-        ],
-        desc:"Systematic calibration approach to hit targets with fewer sampling loops.",
-        link:"#"
       }
     };
 
     const modal = document.getElementById('modal');
-    const mImg = document.getElementById('mImg');
-    const mTitle = document.getElementById('mTitle');
-    const mStatus = document.getElementById('mStatus');
-    const mMeta = document.getElementById('mMeta');
-    const mList = document.getElementById('mList');
-    const mDesc = document.getElementById('mDesc');
-    const mLink = document.getElementById('mLink');
-
     const openModal = (id) => {
       const d = db[id];
       if(!d) return;
-
-      mImg.src = d.img;
-      mTitle.textContent = d.title;
-      mStatus.textContent = d.status;
-
+      document.getElementById('mImg').src = d.img;
+      document.getElementById('mTitle').textContent = d.title;
+      document.getElementById('mStatus').textContent = d.status;
       const brandLine = d.brand ? `<b>Brand:</b> ${d.brand}` : "";
       const prodLine  = d.product ? `<b>Product:</b> ${d.product}` : "";
-      mMeta.innerHTML = `${brandLine}${brandLine && prodLine ? "<br>" : ""}${prodLine}`;
-
-      mList.innerHTML = (d.points || []).map(x => `<li>${x}</li>`).join('');
-      mDesc.textContent = d.desc || "";
-
-      if(!d.link || d.link === '#'){ mLink.style.display = 'none'; }
-      else { mLink.style.display = 'inline-flex'; mLink.href = d.link; }
-
+      document.getElementById('mMeta').innerHTML = `${brandLine}${brandLine && prodLine ? "<br>" : ""}${prodLine}`;
+      document.getElementById('mList').innerHTML = (d.points || []).map(x => `<li>${x}</li>`).join('');
+      document.getElementById('mDesc').textContent = d.desc || "";
+      const mLink = document.getElementById('mLink');
+      if(!d.link || d.link === '#'){ mLink.style.display = 'none'; } else { mLink.style.display = 'inline-flex'; mLink.href = d.link; }
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     };
-
-    const closeModal = () => {
-      modal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    };
-
+    const closeModal = () => { modal.classList.remove('active'); document.body.style.overflow = 'auto'; };
+    
     document.querySelectorAll('.case').forEach(card => {
       card.addEventListener('click', () => openModal(card.dataset.id));
-      card.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.id); }
-      });
+      card.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.id); } });
     });
-
     document.getElementById('mClose').addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
-    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+
+
+    // -----------------------------
+    // NEW TRIAL CARDS LOGIC & MODAL 2
+    // -----------------------------
+    const trials = [
+      {
+        badge: "R&D TEXTURE TRIAL",
+        title: "Micro-Birdseye Surface Development",
+        desc: "High-definition micro surface texture tuned via tension control for clean repeat geometry.",
+        tags: ["28G Precision", "Tension Tuning", "Surface Definition"],
+        img: "https://i.ibb.co/SwrYVPtT/IMG-20260222-121025.jpg",
+        method: "Feeder-by-feeder tension micro-adjustment + cam setting validation + loop-length balancing. Resulting in uniform micro-birdseye dots with clean repeat and low defect rate. Avoid over-tension to prevent dot collapse; lock loop length after final repeat approval."
+      },
+      {
+        badge: "TECHNICAL STUDY",
+        title: "5-Color Single-Step Knit Integration",
+        desc: "Multi-feeder color integration achieved in one knitting step using dominance control.",
+        tags: ["Multi-Feeder Control", "Color Integration", "Yarn Dominance"],
+        img: "https://i.ibb.co/7NKQv3yN/1771740685191.jpg",
+        method: "Controlled feeder sequencing + float management + yarn dominance balancing per color. Resulting in a single-step integrated multi-color structure with stable edges and defined shapes. Dominance shifts if tension drifts—use tension checkpoints per feeder group."
+      },
+      {
+        badge: "R&D TEXTURE TRIAL",
+        title: "Engineered Ventilation Structure",
+        desc: "Breathability achieved through controlled hole geometry while maintaining stability.",
+        tags: ["Ventilation Engineering", "Hole Stability", "Structure Mapping"],
+        img: "https://i.ibb.co/ZRGKVVC3/1771740685173.jpg",
+        method: "Controlled tuck/miss sequencing + local tension balancing + repeat-length stabilization checks. Resulting in stable ventilation windows with consistent geometry and minimal distortion after relaxation. Best results achieved after feeder tension micro-tuning and repeat geometry locking."
+      }
+    ];
+
+    const cardsEl = document.getElementById("tab-trial");
+
+    // Build the dynamic cards into the tab view
+    trials.forEach((t, i) => {
+      const el = document.createElement("div");
+      el.className = "tc-card";
+      el.innerHTML = `
+        <div class="tc-thumb">
+          <img src="${t.img}" alt="${t.title}" loading="lazy">
+          <div class="tc-badge">${t.badge}</div>
+        </div>
+        <div class="tc-content">
+          <h3 class="tc-title">${t.title}</h3>
+          <p class="tc-desc">${t.desc}</p>
+          <div class="tc-chips">
+            ${t.tags.map(x => `<span class="tc-chip">${x}</span>`).join("")}
+          </div>
+        </div>
+      `;
+      el.addEventListener("click", () => openModal_tc(i));
+      cardsEl.appendChild(el);
+    });
+
+    const backdrop_tc = document.getElementById("tc_backdrop");
+    const closeBtn_tc = document.getElementById("closeBtn_tc");
+
+    const m_img_tc = document.getElementById("m_img_tc");
+    const m_badge_tc = document.getElementById("m_badge_tc");
+    const m_title_tc = document.getElementById("m_title_tc");
+    const m_desc_tc = document.getElementById("m_desc_tc");
+    const m_method_tc = document.getElementById("m_method_tc");
+    const m_tags_tc = document.getElementById("m_tags_tc");
+
+    function openModal_tc(index){
+      const t = trials[index];
+      m_img_tc.src = t.img;
+      m_badge_tc.textContent = t.badge || "R&D TEXTURE TRIAL";
+      m_title_tc.textContent = t.title;
+      m_desc_tc.textContent = t.desc;
+
+      m_method_tc.textContent = t.method || "-";
+
+      m_tags_tc.innerHTML = t.tags.map(x => `<span class="tc-chip">${x}</span>`).join("");
+
+      backdrop_tc.classList.add("show");
+      backdrop_tc.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal_tc(){
+      backdrop_tc.classList.remove("show");
+      backdrop_tc.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+    }
+
+    closeBtn_tc.addEventListener("click", closeModal_tc);
+    backdrop_tc.addEventListener("click", (e) => { if(e.target === backdrop_tc) closeModal_tc(); });
+
+
+    // Shared Keyboard Escape
+    window.addEventListener('keydown', (e) => { 
+      if(e.key === 'Escape') { closeModal(); closeModal_tc(); }
+    });
 
     // -----------------------------
     // Contact form (mailto)
@@ -1340,7 +1382,6 @@
       const name = document.getElementById('fullName').value.trim();
       const email = document.getElementById('email').value.trim();
       const msg = document.getElementById('msg').value.trim();
-
       const subject = encodeURIComponent(`Portfolio Inquiry — ${name || "Client"}`);
       const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}\n\n— Sent from portfolio website`);
       window.location.href = `mailto:panthochaki12@gmail.com?subject=${subject}&body=${body}`;
