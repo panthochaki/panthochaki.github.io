@@ -355,32 +355,32 @@
     .tc-modal-top { display: grid; grid-template-columns: 1.45fr 0.85fr; gap: 0; min-height: 380px; }
     @media (max-width: 860px) { .tc-modal-top { grid-template-columns: 1fr; } }
 
-.tc-modal-img{
-  background:#000;
-  min-height:320px;
-  position:relative;
+    .tc-modal-img{
+      background:#000;
+      min-height:320px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+    }
+    html[data-theme="light"] .tc-modal-img { background: #f8fafc; }
 
-  /* NEW */
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px;
-}
+    .tc-modal-img img{
+      width:100%;
+      height:100%;
+      object-fit:contain; 
+      object-position:center;
+      display:block;
+      image-rendering:auto;
+    }
 
-.tc-modal-img img{
-  /* NEW: show full image */
-  width:100%;
-  height:100%;
-  object-fit:contain;      /* <— no cropping */
-  object-position:center;
-  display:block;
-
-  /* optional: keep it sharp */
-  image-rendering:auto;
-.tc-modal-img:after{ display:none; }    html[data-theme="light"] .tc-modal-img:after{ display:none; }}
+    .tc-modal-img:after{ display:none; }
+    html[data-theme="light"] .tc-modal-img:after{ display:none; }
     @media (max-width: 860px) {
-.tc-modal-img:after{ display:none; }
-      html[data-theme="light"] .tc-modal-img:after{ display:none; }    }
+      .tc-modal-img:after{ display:none; }
+      html[data-theme="light"] .tc-modal-img:after{ display:none; }
+    }
 
     .tc-modal-info { padding: 22px 22px 18px; border-left: 1px solid var(--tc-line); }
     @media (max-width: 860px) {
@@ -792,7 +792,7 @@
         </article>
 
         <article class="card case" data-reveal data-id="pumaleggings" role="button" tabindex="0" aria-label="Open PUMA Seamless Leggings case study">
-          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/W4sL4w45/81e-D9-G-S-L-SX679.jpg" alt="PUMA Seamless Training Leggings (Pink)"></div>
+          <div class="img"><img loading="lazy" src="https://i.ibb.co/W4sL4w45/81e-D9-G-S-L-SX679.jpg" alt="PUMA Seamless Training Leggings (Pink)"></div>
           <div class="body">
             <div class="status">PUMA</div>
             <h3>PUMA — Seamless Training Leggings (Pink)</h3>
@@ -1286,10 +1286,18 @@
     const trials = [
       {
         badge: "R&D TEXTURE TRIAL",
+        title: "Engineered Ventilation Structure",
+        desc: "Breathability achieved through controlled hole geometry while maintaining stability.",
+        tags: ["Ventilation Engineering", "Hole Stability", "Structure Mapping"],
+        img: "https://i.ibb.co/SwrYVPtT/IMG-20260222-121025.jpg",
+        method: "Controlled tuck/miss sequencing + local tension balancing + repeat-length stabilization checks. Resulting in stable ventilation windows with consistent geometry and minimal distortion after relaxation. Best results achieved after feeder tension micro-tuning and repeat geometry locking."
+      },
+      {
+        badge: "R&D TEXTURE TRIAL",
         title: "Micro-Birdseye Surface Development",
         desc: "High-definition micro surface texture tuned via tension control for clean repeat geometry.",
         tags: ["28G Precision", "Tension Tuning", "Surface Definition"],
-        img: "https://i.ibb.co/SwrYVPtT/IMG-20260222-121025.jpg",
+        img: "https://i.ibb.co/7NKQv3yN/1771740685191.jpg",
         method: "Feeder-by-feeder tension micro-adjustment + cam setting validation + loop-length balancing. Resulting in uniform micro-birdseye dots with clean repeat and low defect rate. Avoid over-tension to prevent dot collapse; lock loop length after final repeat approval."
       },
       {
@@ -1297,16 +1305,8 @@
         title: "5-Color Single-Step Knit Integration",
         desc: "Multi-feeder color integration achieved in one knitting step using dominance control.",
         tags: ["Multi-Feeder Control", "Color Integration", "Yarn Dominance"],
-        img: "https://i.ibb.co/7NKQv3yN/1771740685191.jpg",
-        method: "Controlled feeder sequencing + float management + yarn dominance balancing per color. Resulting in a single-step integrated multi-color structure with stable edges and defined shapes. Dominance shifts if tension drifts—use tension checkpoints per feeder group."
-      },
-      {
-        badge: "R&D TEXTURE TRIAL",
-        title: "Engineered Ventilation Structure",
-        desc: "Breathability achieved through controlled hole geometry while maintaining stability.",
-        tags: ["Ventilation Engineering", "Hole Stability", "Structure Mapping"],
         img: "https://i.ibb.co/ZRGKVVC3/1771740685173.jpg",
-        method: "Controlled tuck/miss sequencing + local tension balancing + repeat-length stabilization checks. Resulting in stable ventilation windows with consistent geometry and minimal distortion after relaxation. Best results achieved after feeder tension micro-tuning and repeat geometry locking."
+        method: "Controlled feeder sequencing + float management + yarn dominance balancing per color. Resulting in a single-step integrated multi-color structure with stable edges and defined shapes. Dominance shifts if tension drifts—use tension checkpoints per feeder group."
       }
     ];
 
