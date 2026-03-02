@@ -301,10 +301,9 @@
     .tc-thumb img {
       width: 100%; height: 100%; object-fit: cover;
       display: block; filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.02);
       transition: transform .5s ease;
     }
-    .tc-card:hover .tc-thumb img { transform: scale(1.08); }
+    .tc-card:hover .tc-thumb img { transform: scale(1.06); }
     .tc-thumb:after {
       content: ""; position: absolute; inset: 0;
       background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.58) 90%);
@@ -349,7 +348,7 @@
     .tc-modal-backdrop.show { display: flex; }
 
     .tc-modal-box {
-      width: min(1050px, 100%); max-height: 94vh; overflow-y: auto;
+      width: min(1080px, 100%); max-height: 94vh; overflow-y: auto;
       border-radius: 26px; border: 1px solid rgba(255,255,255,0.14);
       background: var(--panel);
       box-shadow: 0 35px 120px rgba(0,0,0,0.65);
@@ -357,29 +356,36 @@
     }
     html[data-theme="light"] .tc-modal-box { background: #fff; border-color: var(--border); }
 
-    .tc-modal-top { display: grid; grid-template-columns: 1.45fr 0.85fr; gap: 0; min-height: 380px; }
-    @media (max-width: 860px) { .tc-modal-top { grid-template-columns: 1fr; } }
+    /* Adjusted layout to frame the full unzoomed image */
+    .tc-modal-top { display: grid; grid-template-columns: 1.35fr 1fr; gap: 0; min-height: 400px; }
+    @media (max-width: 860px) { .tc-modal-top { grid-template-columns: 1fr; min-height: auto;} }
 
-    .tc-modal-img { background: #000; min-height: 320px; position: relative; }
-    html[data-theme="light"] .tc-modal-img { background: #f8fafc; }
-    .tc-modal-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .tc-modal-img { 
+      background: rgba(0,0,0,0.4); 
+      position: relative; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    html[data-theme="light"] .tc-modal-img { background: rgba(0,0,0,0.04); }
+    
+    .tc-modal-img img { 
+      width: 100%; 
+      height: 100%; 
+      max-height: 450px;
+      object-fit: contain; /* COMPLETELY FIXES ZOOM: Image is now fully visible, uncropped! */
+      object-position: center; 
+      display: block; 
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
     .tc-modal-img:after {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(90deg, transparent 75%, rgba(17,24,39,0.95) 100%); pointer-events: none;
-    }
-    html[data-theme="light"] .tc-modal-img:after {
-      background: linear-gradient(90deg, transparent 75%, #fff 100%); 
-    }
-    @media (max-width: 860px) {
-      .tc-modal-img:after { background: linear-gradient(180deg, transparent 75%, rgba(17,24,39,0.95) 100%); }
-      html[data-theme="light"] .tc-modal-img:after { background: linear-gradient(180deg, transparent 75%, #fff 100%); }
+      display: none; /* Removed the gradient overlay so no part of the image is hidden */
     }
 
-    .tc-modal-info { padding: 22px 22px 18px; border-left: 1px solid var(--tc-line); }
-    @media (max-width: 860px) {
-      .tc-modal-info { border-left: none; border-top: 1px solid var(--tc-line); }
-    }
-
+    .tc-modal-info { padding: 32px 28px 24px; border-left: 1px solid var(--tc-line); }
     .tc-modal-title { margin: 14px 0 10px; font-size: 1.7rem; font-weight: 950; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); }
     .tc-modal-sub { color: var(--muted); font-size: 0.95rem; font-weight: 850; line-height: 1.6; margin: 0 0 16px; }
 
@@ -786,7 +792,7 @@
         </article>
 
         <article class="card case" data-reveal data-id="pumaleggings" role="button" tabindex="0" aria-label="Open PUMA Seamless Leggings case study">
-          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/W4sL4w45/81e-D9-G-S-L-SX679.jpg" alt="PUMA Seamless Training Leggings (Pink)"></div>
+          <div class="img"><img loading="lazy" src="https://i.ibb.co/W4sL4w45/81e-D9-G-S-L-SX679.jpg" alt="PUMA Seamless Training Leggings (Pink)"></div>
           <div class="body">
             <div class="status">PUMA</div>
             <h3>PUMA — Seamless Training Leggings (Pink)</h3>
@@ -1240,7 +1246,7 @@
       },
       pumaleggings: {
         status: "PUMA", title: "PUMA — Seamless Training Leggings (Pink)", brand: "PUMA", product: "Seamless Training Leggings (Pink)",
-        img: "https://i.ibb.co.com/chRWqjMw/51r-U-Ur7md-L-SX679.jpg",
+        img: "https://i.ibb.co.com/W4sL4w45/81e-D9-G-S-L-SX679.jpg",
         points: ["Engineered seamless structure using iPolaris for optimized fit and visual alignment", "Programmed Santoni SM8‑TOP2V (28G) for accurate size consistency and stable high‑speed run behavior", "Developed compression and ventilation zones aligned with buyer performance targets", "Controlled fabric behavior for stretch, recovery, and dimensional stability (pre/post dye)"],
         desc: "Production-ready seamless leggings with stable compression behavior and repeatable bulk performance.",
         link: "#"
