@@ -225,12 +225,14 @@
     .brands{padding:26px}
     .brandgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:14px}
     .brandchip{
+      display:flex;align-items:center;justify-content:center;min-height:80px;
+      font-size:1.15rem;letter-spacing:.5px;
       padding:14px 12px;border-radius:18px;border:1px solid var(--border);
       background:rgba(255,255,255,.03);text-align:center;font-weight:950;transition:var(--t);
     }
     html[data-theme="light"] .brandchip{background:rgba(2,6,23,.02)}
-    .brandchip:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.35)}
-    .brandchip small{display:block;margin-top:4px;color:var(--muted);font-weight:850}
+    .brandchip:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.35);box-shadow:0 15px 35px rgba(0,0,0,0.2)}
+    html[data-theme="light"] .brandchip:hover{box-shadow:0 10px 25px rgba(0,0,0,0.05)}
 
     /* Tabs + cases */
     .tabs{display:flex;gap:10px;margin:18px 0 22px;flex-wrap:wrap}
@@ -245,8 +247,10 @@
     .tab-view.active{display:grid}
     .cases-grid{grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
     
-    .case{overflow:hidden;cursor:pointer;transition:var(--t)}
-    .case:hover{transform:translateY(-8px);border-color:rgba(34,211,238,.35)}
+    .case{overflow:hidden;cursor:pointer;transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;}
+    .case:hover{transform:translateY(-5px);border-color:rgba(34,211,238,.40);box-shadow: 0 30px 60px rgba(0,0,0,0.65);}
+    html[data-theme="light"] .case:hover{border-color:var(--accent);box-shadow: 0 15px 35px rgba(0,0,0,0.1);}
+    
     .case .img{height:190px;background:#000;position:relative;overflow:hidden}
     .case .img img{width:100%;height:100%;object-fit:cover;opacity:.93;transition:transform .7s ease}
     .case:hover .img img{transform:scale(1.08)}
@@ -273,7 +277,7 @@
       box-shadow: var(--shadow);
       position: relative;
       cursor: pointer;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
     }
     html[data-theme="light"] .tc-card {
       background: #ffffff;
@@ -284,8 +288,9 @@
       transform: translateY(-5px);
       border-color: rgba(34,211,238, 0.4);
       background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+      box-shadow: 0 30px 60px rgba(0,0,0,0.65);
     }
-    html[data-theme="light"] .tc-card:hover { background: #f8fafc; border-color: var(--accent); }
+    html[data-theme="light"] .tc-card:hover { background: #f8fafc; border-color: var(--accent); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
 
     .tc-thumb {
       height: 210px;
@@ -712,11 +717,11 @@
           </div>
 
           <div class="brandgrid">
-            <div class="brandchip">PUMA <small>Seamless program tuning</small></div>
-            <div class="brandchip">M&amp;S <small>Texture + stability</small></div>
-            <div class="brandchip">Reebok <small>Fit & performance</small></div>
-            <div class="brandchip">AYBL <small>Compression mapping</small></div>
-            <div class="brandchip">Squatwolf <small>Bulk feasibility</small></div>
+            <div class="brandchip">PUMA</div>
+            <div class="brandchip">M&amp;S</div>
+            <div class="brandchip">Reebok</div>
+            <div class="brandchip">AYBL</div>
+            <div class="brandchip">Squatwolf</div>
           </div>
 
           <div style="margin-top:16px;color:var(--muted);font-weight:850;line-height:1.7">
@@ -792,7 +797,7 @@
         </article>
 
         <article class="card case" data-reveal data-id="pumaleggings" role="button" tabindex="0" aria-label="Open PUMA Seamless Leggings case study">
-          <div class="img"><img loading="lazy" src="https://i.ibb.co/W4sL4w45/81e-D9-G-S-L-SX679.jpg" alt="PUMA Seamless Training Leggings (Pink)"></div>
+          <div class="img"><img loading="lazy" src="https://i.ibb.co.com/W4sL4w45/81e-D9-G-S-L-SX679.jpg" alt="PUMA Seamless Training Leggings (Pink)"></div>
           <div class="body">
             <div class="status">PUMA</div>
             <h3>PUMA — Seamless Training Leggings (Pink)</h3>
