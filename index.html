@@ -6,17 +6,14 @@
   <title>Pantho Chaki — Seamless Knit Design Engineer (Santoni SM8-TOP2V)</title>
   <meta name="description" content="Pantho Chaki — Seamless Knit Design Engineer (Santoni SM8-TOP2V 28G, iPolaris). Performance sportswear, engineered seamless fabrics, GSM & stretch control, compression mapping, bulk stability."/>
   <meta name="theme-color" content="#050814" />
-
   <!-- Open Graph -->
   <meta property="og:title" content="Pantho Chaki — Seamless Knit Design Engineer" />
   <meta property="og:description" content="Santoni SM8-TOP2V (28G) • iPolaris • Bulk stability • GSM & stretch control • Compression mapping" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://ui-avatars.com/api/?name=Pantho+Chaki&size=1200&background=050814&color=22d3ee&bold=true" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --bg:#050814;
@@ -50,11 +47,9 @@
       --accent2:#4f46e5;
       --shadow:0 18px 45px rgba(2,6,23,.12);
       --focus:0 0 0 4px rgba(8,145,178,.16);
-
       --tc-line: rgba(15,23,42,.10);
       --tc-chip: rgba(2,6,23,0.05);
     }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
@@ -70,7 +65,7 @@
     img{max-width:100%;display:block}
     a{color:inherit}
     .container{width:min(var(--max),92%);margin:0 auto}
-    .section{padding:96px 0}
+    .section{padding:110px 0}
     .grid{display:grid;gap:22px}
     .card{
       background:var(--panel);
@@ -178,7 +173,6 @@
     .btn.ghost:hover{transform:translateY(-3px)}
     .btn.linkedin{background:#0077b5;color:#fff}
     .btn.linkedin:hover{transform:translateY(-3px);box-shadow:0 16px 35px rgba(0,119,181,.22)}
-
     .profile{
       padding:14px;border-radius:32px;transform:rotate(1.1deg);transition:var(--t);
       max-width:360px;margin-left:auto;
@@ -245,12 +239,10 @@
     .tab-view{display:none}
     .tab-view.active{display:grid}
     .cases-grid{grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
-
     .case{overflow:hidden;cursor:pointer;transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;}
     .case:hover{transform:translateY(-5px);border-color:rgba(34,211,238,.40);box-shadow: 0 30px 60px rgba(0,0,0,0.65);}
     html[data-theme="light"] .case:hover{border-color:var(--accent);box-shadow: 0 15px 35px rgba(0,0,0,0.1);}
-
-    .case .img{height:190px;background:#000;position:relative;overflow:hidden}
+    .case .img{height:260px;background:#000;position:relative;overflow:hidden}
     .case .img img{width:100%;height:100%;object-fit:cover;opacity:.93;transition:transform .7s ease}
     .case:hover .img img{transform:scale(1.08)}
     .case .body{padding:18px 18px 20px}
@@ -265,8 +257,14 @@
     .mini span{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.03);font-weight:950;font-size:.82rem}
     html[data-theme="light"] .mini span{background:rgba(2,6,23,.02)}
 
+    /* RESULT BADGE */
+    .result-badge{
+      display:inline-block;margin-top:8px;padding:4px 10px;border-radius:999px;
+      background:rgba(52,211,153,.12);color:var(--good);font-size:.82rem;font-weight:900;
+    }
+
     /* =========================
-       TRIAL CARDS (R&D) + MODAL
+       TEXTURE LAB (MODAL UI)
        ========================= */
     .tc-card {
       border: 1px solid var(--tc-line);
@@ -294,7 +292,7 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     }
     .tc-thumb {
-      height: 210px;
+      height: 240px;
       position: relative;
       background: #101225;
       overflow: hidden;
@@ -337,14 +335,13 @@
       border: 1px solid var(--tc-line); border-radius: 999px;
     }
 
-    /* TRIAL MODAL */
+    /* TEXTURE LAB MODAL */
     .tc-modal-backdrop {
       position: fixed; inset: 0; background: rgba(0,0,0,0.85);
       display: none; align-items: center; justify-content: center;
       padding: 18px; z-index: 5000; backdrop-filter: blur(10px);
     }
     .tc-modal-backdrop.show { display: flex; }
-
     .tc-modal-box {
       width: min(1080px, 100%); max-height: 94vh; overflow-y: auto;
       border-radius: 26px; border: 1px solid rgba(255,255,255,0.14);
@@ -353,10 +350,8 @@
       position: relative; backdrop-filter: blur(14px);
     }
     html[data-theme="light"] .tc-modal-box { background: #fff; border-color: var(--border); }
-
     .tc-modal-top { display: grid; grid-template-columns: 1.35fr 1fr; gap: 0; min-height: 400px; }
     @media (max-width: 860px) { .tc-modal-top { grid-template-columns: 1fr; min-height: auto;} }
-
     .tc-modal-img {
       background: rgba(0,0,0,0.4);
       position: relative;
@@ -366,7 +361,6 @@
       padding: 24px;
     }
     html[data-theme="light"] .tc-modal-img { background: rgba(0,0,0,0.04); }
-
     .tc-modal-img img{
       width: 100%;
       height: 100%;
@@ -377,11 +371,9 @@
       border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
-
     .tc-modal-info { padding: 32px 28px 24px; border-left: 1px solid var(--tc-line); }
     .tc-modal-title { margin: 14px 0 10px; font-size: 1.7rem; font-weight: 950; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); }
     .tc-modal-sub { color: var(--muted); font-size: 0.95rem; font-weight: 850; line-height: 1.6; margin: 0 0 16px; }
-
     .tc-modal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
     .tc-box{
       border: 1px solid var(--tc-line); background: rgba(255,255,255,0.04);
@@ -391,7 +383,6 @@
     .tc-box h4 { margin: 0 0 10px; font-size: 0.85rem; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
     .tc-box p { margin: 0; font-size: 1.05rem; font-weight: 850; line-height: 1.65; color: var(--text); }
 
-    /* --- SPEC LIST (MATCHES YOUR 2ND PICTURE) --- */
     .tc-specs{ display:grid; gap:10px; }
     .tc-spec{
       display:grid;
@@ -418,13 +409,11 @@
     @media (max-width: 860px){
       .tc-spec{ grid-template-columns: 1fr; gap:6px; }
     }
-
     .tc-modal-bottom{
       padding: 14px 18px 18px; border-top: 1px solid var(--tc-line);
       display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between;
     }
     .tc-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-
     .tc-close-btn{
       border: 1px solid var(--tc-line); background: rgba(255,255,255,0.08);
       color: var(--text); padding: 10px 18px; border-radius: 14px;
@@ -502,7 +491,6 @@
     .contactactions{display:flex;flex-direction:column;gap:10px;margin-top:14px}
     .contactactions a{background:#001016;color:#fff;border:none}
     .contactactions a:hover{transform:translateY(-3px)}
-
     .footer{padding:56px 0;border-top:1px solid var(--border);color:var(--muted);font-weight:900;text-align:center}
 
     /* Original Modal (Brands) */
@@ -534,6 +522,7 @@
     /* Reveal */
     [data-reveal]{opacity:0;transform:translateY(22px);transition:900ms cubic-bezier(.23,1,.32,1)}
     [data-reveal].visible{opacity:1;transform:translateY(0)}
+
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       [data-reveal]{opacity:1;transform:none;transition:none}
@@ -591,17 +580,16 @@
             <div class="sub">Seamless Knit Design Engineer</div>
           </div>
         </a>
-
         <div class="navlinks" aria-label="Primary">
           <a href="#authority">About</a>
           <a href="#brands">Brands</a>
           <a href="#work">Case Studies</a>
+          <a href="#lab">Structures Lab</a>
           <a href="#workflow">Workflow</a>
           <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </div>
-
         <div class="navactions">
           <button class="iconbtn" id="themeToggle" aria-label="Toggle Theme" title="Theme">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -624,6 +612,7 @@
       <a href="#authority" class="sheetLink">About <span>→</span></a>
       <a href="#brands" class="sheetLink">Brands <span>→</span></a>
       <a href="#work" class="sheetLink">Case Studies <span>→</span></a>
+      <a href="#lab" class="sheetLink">Structures Lab <span>→</span></a>
       <a href="#workflow" class="sheetLink">Workflow <span>→</span></a>
       <a href="#experience" class="sheetLink">Experience <span>→</span></a>
       <a href="#skills" class="sheetLink">Skills <span>→</span></a>
@@ -638,20 +627,18 @@
       <div data-reveal>
         <div class="kicker"><span class="pulse"></span> Available for Global Seamless Projects</div>
         <div class="h1">PANTHO <span class="grad">CHAKI</span></div>
-
         <p class="lead">
           Seamless Knit Design Engineer — <b>Santoni SM8-TOP2V (28G)</b> & <b>iPolaris</b>.
           Focused on <b>performance sportswear</b>, <b>engineered seamless fabrics</b>, <b>bulk stability</b>,
           <b>GSM & stretch control</b>, and <b>compression mapping</b>.
         </p>
-
         <div class="pillrow">
           <span class="pill">Santoni School, Italy • Feb 2025</span>
           <span class="pill">80-Hour Intensive Training</span>
           <span class="pill">3+ Years Industrial Experience</span>
           <span class="pill">Bangladesh • Fakhruddin Textile Mills Ltd.</span>
         </div>
-
+        <p style="margin:12px 0 0;font-size:1.05rem;color:var(--good);font-weight:900">Stabilizing seamless programs from first sample → bulk production</p>
         <div class="cta">
           <a class="btn primary" href="#work">View Case Studies</a>
           <a class="btn cv" href="Pantho_Chaki_Seamless_Knit_Design_Engineer_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
@@ -659,7 +646,6 @@
           <a class="btn linkedin" href="https://www.linkedin.com/in/panthochaki" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-
       <div data-reveal>
         <div class="card profile">
           <img
@@ -668,11 +654,10 @@
             loading="lazy"
             onerror="this.src='https://ui-avatars.com/api/?name=Pantho+Chaki&size=700&background=050814&color=22d3ee&bold=true'">
         </div>
-
         <div class="metrics">
-          <div class="metric"><b>SM8-TOP2V (28G)</b><span>Production tuning</span></div>
-          <div class="metric"><b>iPolaris</b><span>Program logic & zoning</span></div>
-          <div class="metric"><b>Bulk Stability</b><span>Defect prevention focus</span></div>
+          <div class="metric"><b>SM8-TOP2V 28G</b><span>Production-tuned</span></div>
+          <div class="metric"><b>iPolaris Zoning</b><span>Compression mapping</span></div>
+          <div class="metric"><b>Bulk Stability</b><span>±1.8% GSM control</span></div>
         </div>
       </div>
     </div>
@@ -685,7 +670,6 @@
         <h2>Technical Authority</h2>
         <p>Engineering-first execution: Santoni machine logic, tension strategy, and controlled fabric behavior from development to bulk production.</p>
       </div>
-
       <div class="grid authority">
         <div class="card pad" data-reveal>
           <div class="badgebox">
@@ -697,7 +681,6 @@
               <div style="color:var(--muted);font-weight:900;margin-top:2px">Santoni School, Italy (S.p.A) • Feb 2025 • 80 hours</div>
             </div>
           </div>
-
           <div class="meta">
             <span class="tag">Santoni Certified</span>
             <span class="tag">SM8-TOP2V program logic</span>
@@ -706,12 +689,10 @@
             <span class="tag">Bulk stability</span>
             <span class="tag">Defect prevention</span>
           </div>
-
           <p style="color:var(--muted);font-weight:850;line-height:1.75;margin:0">
             I execute and stabilize SM8-TOP2V seamless programs for performance garments, translating fit and fabric targets into repeatable machine logic.
             My work focuses on stitch density control, carrier behavior, compression zoning, and defect elimination to ensure stable output from development through bulk production.
           </p>
-
           <ul class="list">
             <li>GSM & stretch behavior control (pre / post dye)</li>
             <li>Program stability and defect prevention in bulk</li>
@@ -728,7 +709,6 @@
             </div>
             <div class="pill" style="border-color:rgba(34,211,238,.25)">Production + R&amp;D</div>
           </div>
-
           <div class="brandgrid">
             <div class="brandchip">PUMA</div>
             <div class="brandchip">M&amp;S</div>
@@ -737,12 +717,10 @@
             <div class="brandchip">LPP</div>
             <div class="brandchip">AUCHAN</div>
           </div>
-
           <div style="margin-top:16px;color:var(--muted);font-weight:850;line-height:1.7">
             Current role: <b style="color:var(--text)">Seamless Knit Design Engineer</b> at
             <b style="color:var(--text)">Fakhruddin Textile Mills Ltd.</b> — 3+ years industrial experience.
           </div>
-
           <h3 style="margin:22px 0 0">Typical Engineering Contributions</h3>
           <ul class="list">
             <li>Seamless program tuning for brand-specific fit and performance</li>
@@ -760,15 +738,14 @@
     <div class="container">
       <div class="head" data-reveal>
         <h2>Engineering Case Studies</h2>
-        <p>Brand programs • R&amp;D trials • Production-validated solutions.</p>
+        <p>Brand programs • Production-validated solutions.</p>
       </div>
 
+      <!-- ONLY ONE TAB NOW (R&D TAB REMOVED) -->
       <div class="tabs" data-reveal>
         <button class="tab active" data-tab="brand" type="button">Brand Projects</button>
-        <button class="tab" data-tab="trial" type="button">R&amp;D / Texture Trials</button>
       </div>
 
-      <!-- Tab: Brands -->
       <div class="grid cases-grid tab-view active" id="tab-brand">
         <article class="card case" data-reveal data-id="puma" role="button" tabindex="0" aria-label="Open PUMA case study">
           <div class="img"><img loading="lazy" src="https://i.ibb.co/sX1r96T/puma.png" alt="PUMA case study"></div>
@@ -776,6 +753,7 @@
             <div class="status">PUMA</div>
             <h3>PUMA — Dare To Women’s Flared Shorts</h3>
             <p>Optimized seamless program for stable high-speed knitting, ensuring bulk-ready output and dimensional consistency.</p>
+            <div class="result-badge"> Combined seamless & cut and sew </div>
             <div class="mini"><span>TOP2V logic</span><span>bulk stability</span><span>defect prevention</span></div>
           </div>
         </article>
@@ -786,6 +764,7 @@
             <div class="status">M&amp;S</div>
             <h3>M&amp;S — Rib Scoop Neck Seamless Crop Top</h3>
             <p>Balanced hand-feel and recovery with controlled stitch density and stability validation.</p>
+            <div class="result-badge">Shape retention + production speed</div>
             <div class="mini"><span>stitch density</span><span>shape retention</span><span>speed-ready</span></div>
           </div>
         </article>
@@ -796,6 +775,7 @@
             <div class="status">AYBL</div>
             <h3>AYBL — Enhance Seamless One-Shoulder Sports Bra (Red)</h3>
             <p>Developed seamless structure and compression mapping aligned with buyer performance targets.</p>
+            <div class="result-badge">Compression zones + bulk ready</div>
             <div class="mini"><span>iPolaris build</span><span>TOP2V logic</span><span>compression zones</span></div>
           </div>
         </article>
@@ -806,6 +786,7 @@
             <div class="status">AYBL</div>
             <h3>AYBL — Adapt Seamless Leggings (Green)</h3>
             <p>Engineered seamless leggings with optimized structure, size consistency, and controlled stretch behavior.</p>
+            <div class="result-badge">Stretch control + size consistency</div>
             <div class="mini"><span>iPolaris build</span><span>TOP2V programming</span><span>stretch control</span></div>
           </div>
         </article>
@@ -816,14 +797,53 @@
             <div class="status">PUMA</div>
             <h3>PUMA — Seamless Training Leggings (Pink)</h3>
             <p>Engineered seamless leggings with controlled compression zones and bulk-ready stability.</p>
+            <div class="result-badge">Compression + bulk stability</div>
             <div class="mini"><span>iPolaris build</span><span>TOP2V logic</span><span>compression control</span></div>
           </div>
         </article>
       </div>
+    </div>
+  </section>
 
-      <!-- Tab: Trials (IMPORTANT: KEEP EMPTY - JS will inject updated cards) -->
-      <div class="grid cases-grid tab-view" id="tab-trial" data-reveal>
-        <!-- Cards injected by JavaScript trials[] -->
+  <!-- Knit Structures Lab -->
+  <section class="section" id="lab" style="background:var(--panel2)">
+    <div class="container">
+      <div class="head" data-reveal>
+        <h2>Knit Structures Lab</h2>
+        <p>R&amp;D textures developed &amp; production-tested on Santoni SM8-TOP2V 28G • All repeatable in bulk</p>
+      </div>
+
+      <div class="grid cases-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
+        <div class="card tc-card" onclick="openModal_tc(0)" data-reveal>
+          <div class="tc-thumb"><img src="https://i.ibb.co/SwrYVPtT/IMG-20260222-121025.jpg" alt="Ventilation Mesh"></div>
+          <div class="tc-content">
+            <h3 class="tc-title">Engineered Ventilation Mesh</h3>
+            <p class="tc-desc">Controlled hole geometry for breathability while maintaining structural stability.</p>
+            <div class="mini"><span>28G</span><span>Tuck/Miss</span><span>iPolaris</span></div>
+          </div>
+        </div>
+
+        <div class="card tc-card" onclick="openModal_tc(1)" data-reveal>
+          <div class="tc-thumb"><img src="https://i.ibb.co/7NKQv3yN/1771740685191.jpg" alt="Micro-Birdseye"></div>
+          <div class="tc-content">
+            <h3 class="tc-title">Micro-Birdseye Surface</h3>
+            <p class="tc-desc">High-definition micro texture tuned via precise feeder tension control.</p>
+            <div class="mini"><span>28G Precision</span><span>Tension Tuning</span><span>Surface Definition</span></div>
+          </div>
+        </div>
+
+        <div class="card tc-card" onclick="openModal_tc(2)" data-reveal>
+          <div class="tc-thumb"><img src="https://i.ibb.co/ZRGKVVC3/1771740685173.jpg" alt="5-Color Integration"></div>
+          <div class="tc-content">
+            <h3 class="tc-title">5-Color Single-Step Integration</h3>
+            <p class="tc-desc">Multi-feeder color dominance achieved in one knitting step.</p>
+            <div class="mini"><span>Multi-Feeder</span><span>Color Mapping</span><span>Yarn Dominance</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:40px" data-reveal>
+        <a href="#contact" class="btn primary">Want these structures in your next program? →</a>
       </div>
     </div>
   </section>
@@ -835,10 +855,8 @@
         <h2>Technical Workflow</h2>
         <p>Executive clarity + factory-depth control: techpack → structure → TOP2V logic → measurement → dye → evaluation → fit loop → size-set → production support.</p>
       </div>
-
       <div class="grid wf card" data-reveal>
         <div class="wf-side soft" id="wfNav"></div>
-
         <div class="wf-body">
           <div id="wfTitle"><h3></h3></div>
           <p id="wfText"></p>
@@ -856,7 +874,6 @@
         <h2>Experience &amp; Education</h2>
         <p>Industrial seamless development + certified Santoni training + textile engineering foundation.</p>
       </div>
-
       <div class="grid exp">
         <div class="card exp-card" data-reveal>
           <div class="exp-top">
@@ -915,7 +932,6 @@
         <h2>Core Skill Stack</h2>
         <p>Focused on high-value factory outcomes: stability, repeatability, and controlled performance targets.</p>
       </div>
-
       <div class="grid skills">
         <div class="card skill" data-reveal>
           <h4>SM8-TOP2V Programming &amp; Stability</h4>
@@ -943,7 +959,6 @@
         <h2>Start a Project</h2>
         <p>Industrial collaboration, technical consultation, or career opportunities.</p>
       </div>
-
       <div class="grid contact">
         <div class="card form" data-reveal>
           <form id="contactForm">
@@ -965,11 +980,9 @@
             </div>
           </form>
         </div>
-
         <div class="card contactbox" data-reveal>
           <h3>Direct Contact</h3>
           <p>Fastest response via WhatsApp or LinkedIn.</p>
-
           <div class="contactitem">
             <small>Email</small>
             <b>panthochaki12@gmail.com</b>
@@ -982,7 +995,6 @@
             <small>LinkedIn</small>
             <b>Pantho Chaki</b>
           </div>
-
           <div class="contactactions">
             <a class="btn" href="https://www.linkedin.com/in/panthochaki" target="_blank" rel="noopener">Open LinkedIn</a>
             <a class="btn" href="https://wa.me/8801728102345" target="_blank" rel="noopener">Message WhatsApp</a>
@@ -1010,7 +1022,6 @@
         <div class="m-subhead">My Role &amp; Technical Contribution:</div>
         <ul class="m-ul" id="mList"></ul>
         <p class="m-desc" id="mDesc"></p>
-
         <div class="m-actions">
           <a class="btn primary" id="mLink" href="#" target="_blank" rel="noopener">Open Reference</a>
           <a class="btn ghost" href="#contact" id="mContact">Contact Me</a>
@@ -1019,19 +1030,17 @@
     </div>
   </div>
 
-  <!-- Modal 2: Trials (UPDATED TO TECHNICAL SPECS LIKE 2ND PICTURE) -->
+  <!-- Modal 2: Texture Lab (used by Knit Structures Lab cards) -->
   <div class="tc-modal-backdrop" id="tc_backdrop" aria-hidden="true">
-    <div class="tc-modal-box" role="dialog" aria-modal="true" aria-label="R&D Trial Detail">
+    <div class="tc-modal-box" role="dialog" aria-modal="true" aria-label="Texture Lab Detail">
       <div class="tc-modal-top">
         <div class="tc-modal-img">
-          <img id="m_img_tc" alt="Trial image" />
+          <img id="m_img_tc" alt="Texture image" />
         </div>
-
         <div class="tc-modal-info">
-          <div class="tc-badge" id="m_badge_tc" style="position:relative; top:0; left:0; margin-bottom:14px; display:inline-flex;">R&D TEXTURE TRIAL</div>
+          <div class="tc-badge" id="m_badge_tc" style="position:relative; top:0; left:0; margin-bottom:14px; display:inline-flex;">TEXTURE LAB • SM8-TOP2V</div>
           <h2 class="tc-modal-title" id="m_title_tc"></h2>
           <p class="tc-modal-sub" id="m_desc_tc"></p>
-
           <div class="tc-modal-grid">
             <div class="tc-box">
               <h4>Technical Specifications</h4>
@@ -1040,7 +1049,6 @@
           </div>
         </div>
       </div>
-
       <div class="tc-modal-bottom">
         <div class="tc-meta" id="m_tags_tc"></div>
         <button class="tc-close-btn" id="closeBtn_tc">Close</button>
@@ -1054,24 +1062,20 @@
     // -----------------------------
     const root = document.documentElement;
     const themeToggle = document.getElementById('themeToggle');
-
     const applyTheme = (t) => {
       root.setAttribute('data-theme', t);
       try { localStorage.setItem('theme', t); } catch {}
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', t === 'light' ? '#f7f9ff' : '#050814');
     };
-
     try {
       const saved = localStorage.getItem('theme');
       if (saved === 'dark' || saved === 'light') applyTheme(saved);
     } catch {}
-
     themeToggle.addEventListener('click', () => {
       const isDark = root.getAttribute('data-theme') === 'dark';
       applyTheme(isDark ? 'light' : 'dark');
     });
-
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // -----------------------------
@@ -1093,26 +1097,22 @@
     const sheet = document.getElementById('sheet');
     const openMenu = document.getElementById('openMenu');
     const closeMenu = document.getElementById('closeMenu');
-
     openMenu.addEventListener('click', () => sheet.classList.add('active'));
     closeMenu.addEventListener('click', () => sheet.classList.remove('active'));
     sheet.addEventListener('click', (e) => { if(e.target === sheet) sheet.classList.remove('active'); });
     document.querySelectorAll('.sheetLink').forEach(a => a.addEventListener('click', () => sheet.classList.remove('active')));
 
     // -----------------------------
-    // Tabs
+    // Tabs (R&D tab removed, keep this simple for future)
     // -----------------------------
     const tabButtons = document.querySelectorAll('.tab');
-    const tabViews = {
-      brand: document.getElementById('tab-brand'),
-      trial: document.getElementById('tab-trial')
-    };
+    const tabBrand = document.getElementById('tab-brand');
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         tabButtons.forEach(b => b.classList.remove('active'));
-        Object.values(tabViews).forEach(v => v.classList.remove('active'));
         btn.classList.add('active');
-        tabViews[btn.dataset.tab].classList.add('active');
+        // only brand view exists
+        tabBrand.classList.add('active');
       });
     });
 
@@ -1202,7 +1202,7 @@
     }).join('');
 
     const wfTitle = document.querySelector('#wfTitle h3');
-    const wfText  = document.getElementById('wfText');
+    const wfText = document.getElementById('wfText');
     const wfExtra = document.getElementById('wfExtra');
     const wfChecks= document.getElementById('wfChecks');
 
@@ -1210,7 +1210,7 @@
       const d = wf[step];
       if(!d) return;
       wfTitle.textContent = d.title;
-      wfText.textContent  = d.text;
+      wfText.textContent = d.text;
       const b = d.boxes || {};
       wfExtra.innerHTML = `
         <div class="wf-box"><small>Inputs</small><b>${b.inputs || ""}</b><p>What we start with.</p></div>
@@ -1281,7 +1281,7 @@
       document.getElementById('mTitle').textContent = d.title;
       document.getElementById('mStatus').textContent = d.status;
       const brandLine = d.brand ? `<b>Brand:</b> ${d.brand}` : "";
-      const prodLine  = d.product ? `<b>Product:</b> ${d.product}` : "";
+      const prodLine = d.product ? `<b>Product:</b> ${d.product}` : "";
       document.getElementById('mMeta').innerHTML = `${brandLine}${brandLine && prodLine ? "<br>" : ""}${prodLine}`;
       document.getElementById('mList').innerHTML = (d.points || []).map(x => `<li>${x}</li>`).join('');
       document.getElementById('mDesc').textContent = d.desc || "";
@@ -1292,6 +1292,7 @@
       document.body.style.overflow = 'hidden';
       modal.setAttribute('aria-hidden','false');
     };
+
     const closeModal = () => {
       modal.classList.remove('active');
       document.body.style.overflow = 'auto';
@@ -1308,11 +1309,11 @@
     modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
 
     // -----------------------------
-    // UPDATED TRIAL CARDS (NOW WITH TECHNICAL SPECS)
+    // TEXTURE LAB DATA (USED BY LAB MODAL)
     // -----------------------------
     const trials = [
       {
-        badge: "R&D TEXTURE TRIAL • SM8-TOP2V",
+        badge: "TEXTURE LAB • SM8-TOP2V",
         title: "Engineered Ventilation Structure",
         desc: "Breathability achieved through controlled hole geometry while maintaining structural stability.",
         tags: ["Ventilation Engineering", "Hole Stability", "Structure Mapping"],
@@ -1326,7 +1327,7 @@
         ]
       },
       {
-        badge: "R&D TEXTURE TRIAL • SM8-TOP2V",
+        badge: "TEXTURE LAB • SM8-TOP2V",
         title: "Micro-Birdseye Surface Development",
         desc: "High-definition micro surface texture tuned via feeder tension control for clean repeat geometry.",
         tags: ["28G Precision", "Tension Tuning", "Surface Definition"],
@@ -1340,7 +1341,7 @@
         ]
       },
       {
-        badge: "R&D TEXTURE TRIAL • SM8-TOP2V",
+        badge: "TEXTURE LAB • SM8-TOP2V",
         title: "5-Color Single-Step Knit Integration",
         desc: "Multi-feeder color integration achieved in one knitting step using dominance control.",
         tags: ["Multi-Feeder Control", "Color Integration", "Yarn Dominance"],
@@ -1355,60 +1356,30 @@
       }
     ];
 
-    const cardsEl = document.getElementById("tab-trial");
-    cardsEl.innerHTML = "";
-
-    trials.forEach((t, i) => {
-      const el = document.createElement("div");
-      el.className = "tc-card";
-      el.innerHTML = `
-        <div class="tc-thumb">
-          <img src="${t.img}" alt="${t.title}" loading="lazy">
-          <div class="tc-badge">${t.badge}</div>
-        </div>
-        <div class="tc-content">
-          <h3 class="tc-title">${t.title}</h3>
-          <p class="tc-desc">${t.desc}</p>
-          <div class="tc-chips">
-            ${t.tags.map(x => `<span class="tc-chip">${x}</span>`).join("")}
-          </div>
-        </div>
-      `;
-      el.addEventListener("click", () => openModal_tc(i));
-      cardsEl.appendChild(el);
-    });
-
-    // Trial modal logic (UPDATED: render specs list)
+    // Texture lab modal logic
     const backdrop_tc = document.getElementById("tc_backdrop");
     const closeBtn_tc = document.getElementById("closeBtn_tc");
-
-    const m_img_tc   = document.getElementById("m_img_tc");
+    const m_img_tc = document.getElementById("m_img_tc");
     const m_badge_tc = document.getElementById("m_badge_tc");
     const m_title_tc = document.getElementById("m_title_tc");
-    const m_desc_tc  = document.getElementById("m_desc_tc");
+    const m_desc_tc = document.getElementById("m_desc_tc");
     const m_specs_tc = document.getElementById("m_specs_tc");
-    const m_tags_tc  = document.getElementById("m_tags_tc");
+    const m_tags_tc = document.getElementById("m_tags_tc");
 
     function openModal_tc(index){
       const t = trials[index];
       if(!t) return;
-
       m_img_tc.src = t.img;
-      m_badge_tc.textContent = t.badge || "R&D TEXTURE TRIAL";
+      m_badge_tc.textContent = t.badge || "TEXTURE LAB";
       m_title_tc.textContent = t.title || "";
       m_desc_tc.textContent = t.desc || "";
-
-      // specs list
       m_specs_tc.innerHTML = (t.specs || []).map(([k,v]) => `
         <div class="tc-spec">
           <b>${k}</b>
           <span>${v}</span>
         </div>
       `).join("");
-
-      // tags (bottom left)
       m_tags_tc.innerHTML = (t.tags || []).map(x => `<span class="tc-chip">${x}</span>`).join("");
-
       backdrop_tc.classList.add("show");
       backdrop_tc.setAttribute("aria-hidden","false");
       document.body.style.overflow = "hidden";
@@ -1419,7 +1390,6 @@
       backdrop_tc.setAttribute("aria-hidden","true");
       document.body.style.overflow = "";
     }
-
     closeBtn_tc.addEventListener("click", closeModal_tc);
     backdrop_tc.addEventListener("click", (e) => { if(e.target === backdrop_tc) closeModal_tc(); });
 
@@ -1447,11 +1417,9 @@
     const sections = [...document.querySelectorAll('section[id]')];
     const navAnchors = [...document.querySelectorAll('.navlinks a')];
     const setActive = (id) => navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
-
     const spy = new IntersectionObserver((entries) => {
       entries.forEach(en => { if(en.isIntersecting) setActive(en.target.id); });
     }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
-
     sections.forEach(s => spy.observe(s));
   </script>
 </body>
