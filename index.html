@@ -6,7 +6,6 @@
   <title>Pantho Chaki — Seamless Knit Design Engineer (Santoni SM8-TOP2V)</title>
   <meta name="description" content="Pantho Chaki — Seamless Knit Design Engineer (Santoni SM8-TOP2V 28G, iPolaris). Performance sportswear, engineered seamless fabrics, GSM & stretch control, compression mapping, bulk stability."/>
   <meta name="theme-color" content="#050814" />
-  <!-- Open Graph -->
   <meta property="og:title" content="Pantho Chaki — Seamless Knit Design Engineer" />
   <meta property="og:description" content="Santoni SM8-TOP2V (28G) • iPolaris • Bulk stability • GSM & stretch control • Compression mapping" />
   <meta property="og:type" content="website" />
@@ -569,7 +568,6 @@
   </div>
   <div class="glowline" aria-hidden="true"></div>
 
-  <!-- Topbar -->
   <header class="topbar">
     <div class="container">
       <nav class="nav" id="nav">
@@ -606,7 +604,6 @@
     </div>
   </header>
 
-  <!-- Mobile sheet -->
   <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Mobile navigation">
     <div class="sheet-card">
       <a href="#authority" class="sheetLink">About <span>→</span></a>
@@ -621,7 +618,6 @@
     </div>
   </div>
 
-  <!-- Hero -->
   <section class="hero" id="home">
     <div class="container grid hero-grid">
       <div data-reveal>
@@ -663,7 +659,6 @@
     </div>
   </section>
 
-  <!-- About / Authority -->
   <section class="section" id="authority">
     <div class="container">
       <div class="head" data-reveal>
@@ -733,7 +728,6 @@
     </div>
   </section>
 
-  <!-- Case Studies -->
   <section class="section" id="work">
     <div class="container">
       <div class="head" data-reveal>
@@ -741,7 +735,6 @@
         <p>Brand programs • Production-validated solutions.</p>
       </div>
 
-      <!-- ONLY ONE TAB NOW (R&D TAB REMOVED) -->
       <div class="tabs" data-reveal>
         <button class="tab active" data-tab="brand" type="button">Brand Projects</button>
       </div>
@@ -805,7 +798,6 @@
     </div>
   </section>
 
-  <!-- Knit Structures Lab -->
   <section class="section" id="lab" style="background:var(--panel2)">
     <div class="container">
       <div class="head" data-reveal>
@@ -840,6 +832,16 @@
             <div class="mini"><span>Multi-Feeder</span><span>Color Mapping</span><span>Yarn Dominance</span></div>
           </div>
         </div>
+
+        <div class="card tc-card" onclick="openModal_tc(3)" data-reveal>
+          <div class="tc-thumb"><img src="https://i.ibb.co.com/RTqh01MP/Gemini-Generated-Image-6ze29o6ze29o6ze2.png" alt="Multi-Zonal Performance Top"></div>
+          <div class="tc-content">
+            <h3 class="tc-title">Multi-Zonal Performance Top</h3>
+            <p class="tc-desc">A comprehensive showcase garment integrating body-mapped ventilation, precision textures, and complex color-patterning.</p>
+            <div class="mini"><span>28G Fine-Gauge</span><span>Body-Mapping</span><span>Integrated Structure</span></div>
+          </div>
+        </div>
+
       </div>
 
       <div style="text-align:center;margin-top:40px" data-reveal>
@@ -848,7 +850,6 @@
     </div>
   </section>
 
-  <!-- Workflow -->
   <section class="section" id="workflow">
     <div class="container">
       <div class="head" data-reveal>
@@ -867,7 +868,6 @@
     </div>
   </section>
 
-  <!-- Experience -->
   <section class="section" id="experience">
     <div class="container">
       <div class="head" data-reveal>
@@ -925,7 +925,6 @@
     </div>
   </section>
 
-  <!-- Skills -->
   <section class="section" id="skills">
     <div class="container">
       <div class="head" data-reveal>
@@ -952,7 +951,6 @@
     </div>
   </section>
 
-  <!-- Contact -->
   <section class="section" id="contact">
     <div class="container">
       <div class="head" data-reveal>
@@ -1010,7 +1008,6 @@
     </div>
   </footer>
 
-  <!-- Modal 1: Brands -->
   <div class="modal" id="modal" aria-hidden="true">
     <button class="m-close" id="mClose" aria-label="Close">&times;</button>
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Case study details">
@@ -1030,7 +1027,6 @@
     </div>
   </div>
 
-  <!-- Modal 2: Texture Lab (used by Knit Structures Lab cards) -->
   <div class="tc-modal-backdrop" id="tc_backdrop" aria-hidden="true">
     <div class="tc-modal-box" role="dialog" aria-modal="true" aria-label="Texture Lab Detail">
       <div class="tc-modal-top">
@@ -1351,6 +1347,21 @@
           ["Gauge / Dia", "28G / 14\""],
           ["Yarn", "Multi-color set (Buyer Spec)"],
           ["Structure", "Single-step multi-color dominance mapping"],
+          ["CAD / Software", "iPolaris"]
+        ]
+      },
+      // NEW OBJECT ADDED HERE
+      {
+        badge: "TEXTURE LAB • SM8-TOP2V",
+        title: "Multi-Zonal Performance Top",
+        desc: "A comprehensive showcase garment integrating body-mapped ventilation, precision textures, and complex color-patterning in a single-step knit.",
+        tags: ["28G Fine-Gauge", "Body-Mapping", "Integrated Structure", "Advanced Functional"],
+        img: "https://i.ibb.co.com/RTqh01MP/Gemini-Generated-Image-6ze29o6ze29o6ze2.png",
+        specs: [
+          ["Machine", "Santoni SM8-TOP2V"],
+          ["Gauge / Dia", "28G / 18\""],
+          ["Yarn", "Nylon + Elastane (Performance Blend)"],
+          ["Structure", "Complex multi-zonal body mapping"],
           ["CAD / Software", "iPolaris"]
         ]
       }
